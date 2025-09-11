@@ -1,103 +1,191 @@
-import Image from "next/image";
+export default function Portfolio() {
+  const PROJECTS = [
+    {
+      title: "Google Calendar Clone",
+      subtitle: "Full‑stack scheduling app",
+      blurb:
+          "A modern calendar with month/week/day views, recurring events, drag‑n‑drop, and auth. Built to mirror real‑world product quality.",
+      stack: ["React", "Next.js", "TailwindCSS", "Spring Boot", "Java", "PostgreSQL", "Supabase"],
+      highlights: [
+        "REST API with JWT auth; CRUD for events and recurring rules",
+        "Server‑side rendering and ISR for fast loads",
+        "E2E tests + CI (GitHub Actions)"
+      ],
+      links: {
+        github: "https://github.com/your-username/calendar-clone",
+        demo: "https://calendar-demo.vercel.app"
+      }
+    },
+    {
+      title: "ZombieAttack (ARMv8 Assembly)",
+      subtitle: "Low‑level game logic",
+      blurb:
+          "Implements core mechanics (movement, collision, score) in ARMv8 with tight loops and register‑level optimization.",
+      stack: ["ARMv8", "Assembly", "Raspberry Pi", "gdb"],
+      highlights: [
+        "Branchless hot path for 20% fewer cycles in critical loop",
+        "Memory‑safe buffer ops; deterministic RNG",
+        "Unit tests for routines (memcmp, memcpy, sprite ops)"
+      ],
+      links: {
+        github: "https://github.com/your-username/zombieattack-armv8"
+      }
+    },
+    {
+      title: "Zoo Upgrade (Java OOP)",
+      subtitle: "Data‑structures & patterns",
+      blurb:
+          "Refactors a legacy console app using SOLID, Strategy, and Factory patterns. Adds tests and profiling.",
+      stack: ["Java", "JUnit", "Maven"],
+      highlights: [
+        "Replaced nested if‑else with polymorphism; 40% code reduction",
+        "HashMap/Set‑backed index for O(1) lookups",
+        ">90% line coverage"
+      ],
+      links: {
+        github: "https://github.com/your-username/zoo-upgrade"
+      }
+    },
+    {
+      title: "AI Parking Info App",
+      subtitle: "City parking finder",
+      blurb:
+          "Searches an area and returns rules, hours, and risk hints; integrates directions and summaries.",
+      stack: ["Next.js", "React", "TailwindCSS", "Node.js", "Mapbox GL JS", "OpenAI API"],
+      highlights: [
+        "Mapbox Directions + vector tiles; custom markers",
+        "Rate‑limit aware server routes with caching",
+        "A11y: keyboard nav + ARIA labels"
+      ],
+      links: {
+        github: "https://github.com/your-username/ai-parking-info",
+        demo: "https://parking-info-demo.vercel.app"
+      }
+    },
+    {
+      title: "TikTok Video Processor",
+      subtitle: "Automation for shorts",
+      blurb:
+          "CLI + UI tool that slices YouTube videos into 1‑min clips, autogenerates captions, and exports 9:16.",
+      stack: ["TypeScript", "Node.js", "FFmpeg", "Whisper"],
+      highlights: [
+        "Parallelized transcodes; ~3× throughput on M‑series Macs",
+        "SRT → burned captions with style presets",
+        "Pluggable pipeline for effects"
+      ],
+      links: {
+        github: "https://github.com/your-username/tiktok-clipper"
+      }
+    }
+  ];
 
-export default function Home() {
+  const SKILLS = [
+    "Java", "C++", "TypeScript", "JavaScript", "React", "Next.js", "Spring Boot", "SQL",
+    "PostgreSQL", "Supabase", "TailwindCSS", "Node.js", "Git", "ARMv8 Assembly", "JUnit", "FFmpeg"
+  ];
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+      <main className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+        {/* Header */}
+        <header className="mx-auto max-w-6xl px-6 pt-12 pb-6">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Jonathan Phung</h1>
+              <p className="mt-2 text-lg text-slate-600">
+                BSN Nurse & Computer Science Student · Building useful, reliable software
+              </p>
+            </div>
+            <nav className="flex gap-3 text-sm">
+              <a className="px-4 py-2 rounded-full bg-slate-900 text-white hover:opacity-90" href="#projects">Projects</a>
+              <a className="px-4 py-2 rounded-full bg-slate-200 hover:bg-slate-300" href="#skills">Skills</a>
+              <a className="px-4 py-2 rounded-full bg-slate-200 hover:bg-slate-300" href="#about">About</a>
+              <a className="px-4 py-2 rounded-full bg-slate-200 hover:bg-slate-300" href="#contact">Contact</a>
+            </nav>
+          </div>
+        </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+        {/* Hero */}
+        <section className="mx-auto max-w-6xl px-6 pb-4">
+          <div className="rounded-2xl border bg-white p-6 md:p-10 shadow-sm">
+            <h2 className="text-2xl md:text-3xl font-semibold">Selected Work</h2>
+            <p className="mt-2 text-slate-600">
+              A curated set of projects that show breadth (frontend, backend, low‑level) and depth (tests, performance, deployment).
+            </p>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="mx-auto max-w-6xl px-6 py-6">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {PROJECTS.map((p) => (
+                <article key={p.title} className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <h3 className="text-xl font-semibold group-hover:underline underline-offset-4">{p.title}</h3>
+                      <p className="text-sm text-slate-500">{p.subtitle}</p>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-700">{p.blurb}</p>
+                  <ul className="mt-3 flex flex-wrap gap-2">
+                    {p.stack.map((s) => (
+                        <li key={s} className="text-xs px-2 py-1 rounded-full bg-slate-100 border">{s}</li>
+                    ))}
+                  </ul>
+                  <ul className="mt-4 list-disc pl-5 text-sm text-slate-700 space-y-1">
+                    {p.highlights.map((h, i) => (
+                        <li key={i}>{h}</li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 flex gap-3 text-sm">
+                    {p.links?.demo && (
+                        <a className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90" href={p.links.demo} target="_blank">Live Demo</a>
+                    )}
+                    {p.links?.github && (
+                        <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href={p.links.github} target="_blank">GitHub</a>
+                    )}
+                  </div>
+                </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section id="skills" className="mx-auto max-w-6xl px-6 py-6">
+          <div className="rounded-2xl border bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold">Skills</h2>
+            <p className="mt-2 text-slate-600 text-sm">Core tools and languages I use regularly.</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {SKILLS.map((s) => (
+                  <span key={s} className="text-xs px-2 py-1 rounded-full bg-slate-100 border">{s}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* About */}
+        <section id="about" className="mx-auto max-w-6xl px-6 py-6">
+          <div className="rounded-2xl border bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold">About</h2>
+            <p className="mt-2 text-slate-700 leading-7">
+              I’m a BSN nurse and CS student who builds practical tools that make everyday tasks easier. Recent focus areas: full‑stack
+              web apps with Spring Boot backends, performance‑minded Java/TypeScript, and low‑level ARM on Raspberry Pi. I like clean
+              APIs, thoughtful UI, and tests that catch bugs before users do.
+            </p>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="mx-auto max-w-6xl px-6 pt-2 pb-12">
+          <div className="rounded-2xl border bg-white p-6 shadow-sm">
+            <h2 className="text-2xl font-semibold">Contact</h2>
+            <div className="mt-3 flex flex-wrap gap-3 text-sm">
+              <a className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90" href="mailto:your.email@example.com">Email</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://linkedin.com/in/your-link" target="_blank">LinkedIn</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://github.com/your-username" target="_blank">GitHub</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="/resume.pdf" target="_blank">Resume (PDF)</a>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
   );
 }
