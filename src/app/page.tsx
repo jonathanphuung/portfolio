@@ -1,71 +1,41 @@
 export default function Portfolio() {
   const PROJECTS = [
+
     {
-      title: "Google Calendar Clone",
-      subtitle: "Full‑stack scheduling app",
+      title: "Order Fulfillment Dashboard",
+      subtitle: "Next.js · React · Tailwind CSS · Supabase",
       blurb:
-          "A modern calendar with month/week/day views, recurring events, drag‑n‑drop, and auth. Built to mirror real‑world product quality.",
-      stack: ["React", "Next.js", "TailwindCSS", "Spring Boot", "Java", "PostgreSQL", "Supabase"],
+        "Full‑stack order management dashboard with server‑side rendering and real‑time tracking for high‑volume fulfillment.",
+      stack: ["Next.js", "React", "TailwindCSS", "Supabase"],
       highlights: [
-        "REST API with JWT auth; CRUD for events and recurring rules",
-        "Server‑side rendering and ISR for fast loads",
-        "E2E tests + CI (GitHub Actions)"
+        "SSR for fast load times; responsive, interactive UI components",
+        "Supabase integration for backend data and real‑time order updates",
+        "Clean setup docs and environment configuration"
       ],
       links: {
-        github: "https://github.com/your-username/calendar-clone",
-        demo: "https://calendar-demo.vercel.app"
+        github: "https://github.com/jonathanphuung/order-fulfillment-dashboard"
       }
     },
     {
-      title: "ZombieAttack (ARMv8 Assembly)",
-      subtitle: "Low‑level game logic",
+      title: "AI‑Enhanced Smart Study Summarizer",
+      subtitle: "Python · FastAPI · JavaScript · HTML/CSS · REST APIs",
       blurb:
-          "Implements core mechanics (movement, collision, score) in ARMv8 with tight loops and register‑level optimization.",
-      stack: ["ARMv8", "Assembly", "Raspberry Pi", "gdb"],
+        "Web app that generates concise summaries from academic text to speed up studying using transformer‑based NLP.",
+      stack: ["Python", "FastAPI", "JavaScript", "HTML", "CSS"],
       highlights: [
-        "Branchless hot path for 20% fewer cycles in critical loop",
-        "Memory‑safe buffer ops; deterministic RNG",
-        "Unit tests for routines (memcmp, memcpy, sprite ops)"
+        "Hugging Face Transformers (BART) for abstractive summarization",
+        "FastAPI backend with a simple, accessible frontend",
+        "REST API integration and clear usage documentation"
       ],
       links: {
-        github: "https://github.com/your-username/zombieattack-armv8"
-      }
-    },
-    {
-      title: "Zoo Upgrade (Java OOP)",
-      subtitle: "Data‑structures & patterns",
-      blurb:
-          "Refactors a legacy console app using SOLID, Strategy, and Factory patterns. Adds tests and profiling.",
-      stack: ["Java", "JUnit", "Maven"],
-      highlights: [
-        "Replaced nested if‑else with polymorphism; 40% code reduction",
-        "HashMap/Set‑backed index for O(1) lookups",
-        ">90% line coverage"
-      ],
-      links: {
-        github: "https://github.com/your-username/zoo-upgrade"
-      }
-    },
-    {
-      title: "TikTok Video Processor",
-      subtitle: "Automation for shorts",
-      blurb:
-          "CLI + UI tool that slices YouTube videos into 1‑min clips, autogenerates captions, and exports 9:16.",
-      stack: ["TypeScript", "Node.js", "FFmpeg", "Whisper"],
-      highlights: [
-        "Parallelized transcodes; ~3× throughput on M‑series Macs",
-        "SRT → burned captions with style presets",
-        "Pluggable pipeline for effects"
-      ],
-      links: {
-        github: "https://github.com/your-username/tiktok-clipper"
+        github: "https://github.com/jonathanphuung/smart-study-summarizer"
       }
     }
   ];
 
   const SKILLS = [
-    "Java", "C++", "TypeScript", "JavaScript", "React", "Next.js", "Spring Boot", "SQL",
-    "PostgreSQL", "Supabase", "TailwindCSS", "Node.js", "Git", "ARMv8 Assembly", "JUnit", "FFmpeg"
+    "Java", "JavaScript", "HTML", "CSS", "React", "Next.js", "Node.js", "TailwindCSS",
+    "Git", "GitHub", "VS Code", "Visual Studio", "IntelliJ", "Supabase"
   ];
 
   return (
@@ -76,7 +46,7 @@ export default function Portfolio() {
             <div>
               <h1 className="text-3xl md:text-5xl font-bold tracking-tight">Jonathan Phung</h1>
               <p className="mt-2 text-lg text-slate-600">
-                BSN Nurse & Computer Science Student · Building useful, reliable software
+                Computer Science Student · Building useful, reliable software
               </p>
             </div>
             <nav className="flex gap-3 text-sm">
@@ -151,9 +121,11 @@ export default function Portfolio() {
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-semibold">About</h2>
             <p className="mt-2 text-slate-700 leading-7">
-              I’m a BSN nurse and CS student who builds practical tools that make everyday tasks easier. Recent focus areas: full‑stack
-              web apps with Spring Boot backends, performance‑minded Java/TypeScript, and low‑level ARM on Raspberry Pi. I like clean
-              APIs, thoughtful UI, and tests that catch bugs before users do.
+              I’m a Computer Science student at San Francisco State University (B.S., expected May 2027). Recent work includes a
+              Next.js/Supabase order fulfillment dashboard and an AI‑powered study summarizer using FastAPI and transformers. I’ve
+              completed CodePath’s Technical Interview Prep (Aug 2025) and Coursera certificates in Introduction to Software Development
+              and Programming with Java. I also lead high‑volume operations as a Fulfillment Expert Team Captain at Target, where I focus
+              on data‑driven process improvements, speed, and accuracy.
             </p>
           </div>
         </section>
@@ -163,10 +135,10 @@ export default function Portfolio() {
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-semibold">Contact</h2>
             <div className="mt-3 flex flex-wrap gap-3 text-sm">
-              <a className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90" href="mailto:your.email@example.com">Email</a>
-              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://linkedin.com/in/your-link" target="_blank">LinkedIn</a>
-              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://github.com/your-username" target="_blank">GitHub</a>
-              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="/resume.pdf" target="_blank">Resume (PDF)</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90" href="mailto:jphung@sfsu.edu">Email</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://www.linkedin.com/in/jonathanphung1/" target="_blank">LinkedIn</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://github.com/jonathanphuung" target="_blank">GitHub</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="/Resume.pdf" target="_blank">Resume (PDF)</a>
             </div>
           </div>
         </section>
