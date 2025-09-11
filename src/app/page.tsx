@@ -47,22 +47,6 @@ export default function Portfolio() {
       }
     },
     {
-      title: "AI Parking Info App",
-      subtitle: "City parking finder",
-      blurb:
-          "Searches an area and returns rules, hours, and risk hints; integrates directions and summaries.",
-      stack: ["Next.js", "React", "TailwindCSS", "Node.js", "Mapbox GL JS", "OpenAI API"],
-      highlights: [
-        "Mapbox Directions + vector tiles; custom markers",
-        "Rate‑limit aware server routes with caching",
-        "A11y: keyboard nav + ARIA labels"
-      ],
-      links: {
-        github: "https://github.com/your-username/ai-parking-info",
-        demo: "https://parking-info-demo.vercel.app"
-      }
-    },
-    {
       title: "TikTok Video Processor",
       subtitle: "Automation for shorts",
       blurb:
