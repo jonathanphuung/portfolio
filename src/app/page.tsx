@@ -1,3 +1,4 @@
+import Image from "next/image";
 export default function Portfolio() {
   const PROJECTS = [
 
@@ -14,7 +15,8 @@ export default function Portfolio() {
       ],
       links: {
         github: "https://github.com/jonathanphuung/order-fulfillment-dashboard"
-      }
+      },
+      image: "/ff1.png"
     },
     {
       title: "AI‑Enhanced Smart Study Summarizer",
@@ -121,11 +123,7 @@ export default function Portfolio() {
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-semibold">About</h2>
             <p className="mt-2 text-slate-700 leading-7">
-              I’m a Computer Science student at San Francisco State University (B.S., expected May 2027). Recent work includes a
-              Next.js/Supabase order fulfillment dashboard and an AI‑powered study summarizer using FastAPI and transformers. I’ve
-              completed CodePath’s Technical Interview Prep (Aug 2025) and Coursera certificates in Introduction to Software Development
-              and Programming with Java. I also lead high‑volume operations as a Fulfillment Expert Team Captain at Target, where I focus
-              on data‑driven process improvements, speed, and accuracy.
+              I’m a Computer Science student at San Francisco State University (B.S., expected May 2027) currently learning AWS to expand my cloud skills. Recent work includes a Next.js/Supabase order fulfillment dashboard and an AI‑powered study summarizer using FastAPI and transformers. In my role as a Fulfillment Expert Team Captain at Target, I led a high-performing team that achieved the #1 store ranking in our district. I used data-driven improvements to streamline operations, consistently met tight deadlines, and cultivated strong communication and collaboration in a high-pressure environment. These experiences have strengthened my leadership, teamwork, and problem-solving abilities, which I carry into every technical project.
             </p>
           </div>
         </section>
@@ -135,7 +133,7 @@ export default function Portfolio() {
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-semibold">Contact</h2>
             <div className="mt-3 flex flex-wrap gap-3 text-sm">
-              <a className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90" href="mailto:jphung@sfsu.edu">Email</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90" href="mailto:jonathanphuung@gmail.com">Email</a>
               <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://www.linkedin.com/in/jonathanphung1/" target="_blank">LinkedIn</a>
               <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://github.com/jonathanphuung" target="_blank">GitHub</a>
               <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="/Resume.pdf" target="_blank">Resume (PDF)</a>
