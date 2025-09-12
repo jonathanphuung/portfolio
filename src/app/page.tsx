@@ -43,7 +43,7 @@ export default function Portfolio() {
         "REST API integration and clear usage documentation",
       ],
       links: {
-        github: "https://github.com/jonathanphuung/smart-study-summarizer",
+        github: "https://github.com/jonathanphuung/smartStudy",
       },
       images: ["/ss.png"],
     },
