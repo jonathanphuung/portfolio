@@ -10,7 +10,6 @@ type Project = {
   stack: string[];
   highlights: string[];
   links?: { github?: string; demo?: string };
-  // multiple images per project
   images?: string[];
 };
 
@@ -30,7 +29,6 @@ export default function Portfolio() {
       links: {
         github: "https://github.com/jonathanphuung/order-fulfillment-dashboard",
       },
-      // ⬇️ Add as many as you want (put files in /public/)
       images: ["/ff1.png", "/ff2.png"],
     },
     {
@@ -47,7 +45,7 @@ export default function Portfolio() {
       links: {
         github: "https://github.com/jonathanphuung/smart-study-summarizer",
       },
-      images: [],
+      images: ["/ss.png"],
     },
   ];
 
@@ -68,7 +66,7 @@ export default function Portfolio() {
     "Supabase",
   ];
 
-  // ---------- Lightbox (fullscreen) state ----------
+  // ---------- Lightbox state ----------
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
   const [lightboxIndex, setLightboxIndex] = useState(0);
@@ -98,7 +96,7 @@ export default function Portfolio() {
     setLightboxIndex((i) => (i - 1 + lightboxImages.length) % lightboxImages.length);
   }, [lightboxImages]);
 
-  // Keyboard events for lightbox
+  // Keyboard navigation
   useEffect(() => {
     if (!lightboxOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -135,7 +133,7 @@ export default function Portfolio() {
           <div className="rounded-2xl border bg-white p-6 md:p-10 shadow-sm">
             <h2 className="text-2xl md:text-3xl font-semibold">Selected Work</h2>
             <p className="mt-2 text-slate-600">
-              A curated set of projects that show breadth (frontend, backend, low-level) and depth (tests, performance, deployment).
+              A curated set of projects that show breadth (frontend, backend, low-level)
             </p>
           </div>
         </section>
@@ -202,7 +200,7 @@ export default function Portfolio() {
   );
 }
 
-/** ---------------- Project Card with Slider ---------------- */
+/** ---------- Project Card with Slider ---------- */
 function ProjectCard({
                        project,
                        onOpenLightbox,
@@ -219,29 +217,26 @@ function ProjectCard({
 
   return (
       <article className="group rounded-2xl border bg-white p-5 shadow-sm hover:shadow-md transition-shadow">
-        {/* Slider */}
         {imgs.length > 0 && (
             <div className="relative mb-3 overflow-hidden rounded-lg">
+              {/* Arrows always on top */}
               <button
                   aria-label="Previous image"
                   onClick={prev}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 px-2 py-1 text-xs shadow hover:bg-white"
+                  className="absolute z-20 left-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 px-2 py-1 text-xs shadow hover:bg-white"
               >
                 ‹
               </button>
               <button
                   aria-label="Next image"
                   onClick={next}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 px-2 py-1 text-xs shadow hover:bg-white"
+                  className="absolute z-20 right-2 top-1/2 -translate-y-1/2 rounded-full border bg-white/90 px-2 py-1 text-xs shadow hover:bg-white"
               >
                 ›
               </button>
 
-              <div
-                  className="cursor-zoom-in"
-                  onClick={() => onOpenLightbox(idx)}
-                  title="Click to view fullscreen"
-              >
+              {/* Image */}
+              <div className="relative z-0">
                 <Image
                     src={imgs[idx]}
                     alt={`${project.title} screenshot ${idx + 1} of ${imgs.length}`}
@@ -252,8 +247,17 @@ function ProjectCard({
                 />
               </div>
 
+              {/* Click overlay to open fullscreen */}
+              <button
+                  type="button"
+                  onClick={() => onOpenLightbox(idx)}
+                  title="Click to view fullscreen"
+                  className="absolute inset-0 z-10 cursor-zoom-in"
+                  aria-label="Open image in fullscreen"
+              />
+
               {/* Dots */}
-              <div className="absolute bottom-2 left-0 right-0 flex items-center justify-center gap-1.5">
+              <div className="absolute z-10 bottom-2 left-0 right-0 flex items-center justify-center gap-1.5">
                 {imgs.map((_, i) => (
                     <button
                         key={i}
@@ -268,12 +272,23 @@ function ProjectCard({
             </div>
         )}
 
-        {/* Header */}
         <div className="flex items-start justify-between gap-3">
           <div>
-            <h3 className="text-xl font-semibold group-hover:underline underline-offset-4">
-              {project.title}
-            </h3>
+            {project.links?.github ? (
+              <a
+                href={project.links.github}
+                target="_blank"
+                rel="noreferrer"
+                title="Open GitHub repository"
+                className="block"
+              >
+                <h3 className="text-xl font-semibold group-hover:underline underline-offset-4 cursor-pointer">
+                  {project.title}
+                </h3>
+              </a>
+            ) : (
+              <h3 className="text-xl font-semibold">{project.title}</h3>
+            )}
             <p className="text-sm text-slate-500">{project.subtitle}</p>
           </div>
         </div>
@@ -304,21 +319,12 @@ function ProjectCard({
                 Live Demo
               </a>
           )}
-          {project.links?.github && (
-              <a
-                  className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300"
-                  href={project.links.github}
-                  target="_blank"
-              >
-                GitHub
-              </a>
-          )}
         </div>
       </article>
   );
 }
 
-/** ---------------- Fullscreen Lightbox ---------------- */
+/** ---------- Fullscreen Lightbox ---------- */
 function Lightbox({
                     open,
                     images,
@@ -347,7 +353,7 @@ function Lightbox({
       >
         <div
             className="relative max-w-6xl w-full"
-            onClick={(e) => e.stopPropagation()} // prevent close when clicking the image/tools
+            onClick={(e) => e.stopPropagation()}
         >
           {/* Title + Close */}
           <div className="flex items-center justify-between mb-2">
@@ -401,7 +407,9 @@ function Lightbox({
             ))}
           </div>
 
-          <p className="mt-2 text-center text-xs text-white/70">Press Esc to close • ←/→ to navigate</p>
+          <p className="mt-2 text-center text-xs text-white/70">
+            Press Esc to close • ←/→ to navigate
+          </p>
         </div>
       </div>
   );
