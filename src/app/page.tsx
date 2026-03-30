@@ -47,6 +47,27 @@ export default function Portfolio() {
       },
       images: ["/ss.png"],
     },
+    {
+      title: "Sleep Research Survey Platform",
+      subtitle: "Web App · JavaScript · Supabase · Data Collection",
+      blurb:
+          "Research website where students complete a guided sleep habits survey and receive personalized feedback, while responses are stored in Supabase for analysis.",
+      stack: ["JavaScript", "Web Development", "Supabase", "UX", "Data Analysis"],
+      highlights: [
+        "Built a complete participant flow: study landing page, consent/disclaimer, and structured survey form",
+        "Captured student responses and persisted records in Supabase for research review",
+        "Generated personalized sleep analysis cards based on survey inputs",
+        "Designed an accessible, student-friendly interface for quick completion",
+      ],
+      links: {
+        github: "https://github.com/jonathanphuung/sleep-research",
+      },
+      images: [
+        "/project-screenshot-1.png",
+        "/project-screenshot-2.png",
+        "/project-screenshot-3.png",
+      ],
+    },
   ];
 
   const SKILLS = [
