@@ -16,20 +16,17 @@ type Project = {
 export default function Portfolio() {
   const PROJECTS: Project[] = [
     {
-      title: "Order Fulfillment Dashboard",
-      subtitle: "Next.js · React · Tailwind CSS · Supabase",
+      title: "AI Caregiver Support Website",
+      subtitle: "Internship Project · Next.js · AI Assistance · Resource Recommendations",
       blurb:
-          "Full-stack order management dashboard with server-side rendering and real-time tracking for high-volume fulfillment.",
-      stack: ["Next.js", "React", "TailwindCSS", "Supabase"],
+          "Support platform for caregivers with practical guidance for elderly care, including AI-powered responses plus recommended YouTube videos and Amazon items.",
+      stack: ["Next.js", "React", "JavaScript", "AI Integration", "Web Development"],
       highlights: [
-        "SSR for fast load times; responsive, interactive UI components",
-        "Supabase integration for backend data and real-time order updates",
-        "Clean setup docs and environment configuration",
+        "Built an accessible Q&A experience to help caregivers handle common elderly-care scenarios",
+        "Integrated AI responses to provide context-aware support and next-step suggestions",
+        "Added recommendation sections for helpful YouTube videos and relevant Amazon products",
       ],
-      links: {
-        github: "https://github.com/jonathanphuung/order-fulfillment-dashboard",
-      },
-      images: ["/ff1.png", "/ff2.png"],
+      images: ["/caregiver-site-1.png", "/caregiver-site-2.png", "/caregiver-site-3.png"],
     },
     {
       title: "AI-Enhanced Smart Study Summarizer",
