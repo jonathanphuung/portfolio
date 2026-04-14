@@ -187,7 +187,7 @@ export default function Portfolio() {
           <div className="rounded-2xl border bg-white p-6 shadow-sm">
             <h2 className="text-2xl font-semibold">About</h2>
             <p className="mt-2 text-slate-700 leading-7">
-              I’m a Computer Science student at San Francisco State University (B.S., expected May 2027) currently learning AWS to expand my cloud skills. Recent work includes a Next.js/Supabase order fulfillment dashboard and an AI-powered study summarizer using FastAPI and transformers. In my role as a Fulfillment Expert Team Captain at Target, I lead a high-performing team that achieved the #1 store ranking in our district. I use data-driven improvements to streamline operations, consistently meet tight deadlines, and cultivate strong communication and collaboration in a high-pressure environments. These experiences have strengthened my leadership, teamwork, and problem-solving abilities, which I carry into every technical project.
+              I’m a Computer Science student at San Francisco State University (B.S., expected May 2027) currently learning AWS to expand my cloud skills. Recent work includes a Next.js/Supabase order fulfillment dashboard and an AI-powered study summarizer using FastAPI and transformers. In my role as a Fulfillment Expert Team Captain at Target, I lead a high-performing team that achieved the #1 store ranking in our district. I use data-driven improvements to streamline operations, consistently meet tight deadlines, and cultivate strong communication and collaboration in a high-pressure environment. These experiences have strengthened my leadership, teamwork, and problem-solving abilities, which I carry into every technical project.
             </p>
           </div>
         </section>
@@ -198,9 +198,9 @@ export default function Portfolio() {
             <h2 className="text-2xl font-semibold">Contact</h2>
             <div className="mt-3 flex flex-wrap gap-3 text-sm">
               <a className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90" href="mailto:jonathanphuung@gmail.com">Email</a>
-              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://www.linkedin.com/in/jonathanphung1/" target="_blank">LinkedIn</a>
-              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://github.com/jonathanphuung" target="_blank">GitHub</a>
-              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="/Resume.pdf" target="_blank">Resume (PDF)</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://www.linkedin.com/in/jonathanphung1/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="https://github.com/jonathanphuung" target="_blank" rel="noreferrer">GitHub</a>
+              <a className="px-3 py-1.5 rounded-full bg-slate-200 hover:bg-slate-300" href="/Resume.pdf" target="_blank" rel="noreferrer">Resume (PDF)</a>
             </div>
           </div>
         </section>
@@ -261,7 +261,6 @@ function ProjectCard({
                     width={800}
                     height={450}
                     className="w-full h-44 md:h-40 lg:h-36 object-cover transition-transform duration-200 group-hover:scale-[1.02]"
-                    priority={true}
                 />
               </div>
 
@@ -333,6 +332,7 @@ function ProjectCard({
                   className="px-3 py-1.5 rounded-full bg-slate-900 text-white hover:opacity-90"
                   href={project.links.demo}
                   target="_blank"
+                  rel="noreferrer"
               >
                 Live Demo
               </a>
@@ -409,7 +409,6 @@ function Lightbox({
                 width={1600}
                 height={900}
                 className="w-full h-[70vh] object-contain bg-black"
-                priority={true}
             />
           </div>
 

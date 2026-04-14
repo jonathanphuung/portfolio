@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Welcome to my Portfolio",
-  description: "",
+  title: "Jonathan Phung | Portfolio",
+  description:
+    "Computer Science portfolio featuring AI, web development, and research-focused projects.",
 };
 
 export default function RootLayout({
