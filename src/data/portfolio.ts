@@ -95,6 +95,13 @@ export const TIMELINE_ITEMS: TimelineItem[] = [
     type: "education",
   },
   {
+    title: "Dementia Aide Internship",
+    period: "Internship",
+    detail:
+      "Rebuilt the company's website end to end and created an AI model based on the founder's published work to answer caregiver questions and recommend relevant YouTube videos and Amazon items.",
+    type: "experience",
+  },
+  {
     title: "Fulfillment Expert Team Captain @ Target",
     period: "Current",
     detail:

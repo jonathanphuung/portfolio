@@ -1,6 +1,8 @@
 import { TIMELINE_ITEMS } from "@/data/portfolio";
 
 export default function AboutPage() {
+  const aboutTimelineItems = TIMELINE_ITEMS.filter((item) => item.type !== "project");
+
   return (
     <main className="page-shell">
       <section className="content-panel reveal">
@@ -16,7 +18,7 @@ export default function AboutPage() {
       <section className="content-panel reveal">
         <h2 className="section-title">Timeline</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {TIMELINE_ITEMS.map((item) => (
+          {aboutTimelineItems.map((item) => (
             <article key={item.title} className="surface-card p-5">
               <p className="eyebrow">{item.type}</p>
               <h3 className="mt-2 text-xl font-semibold">{item.title}</h3>
@@ -27,6 +29,19 @@ export default function AboutPage() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section className="content-panel reveal">
+        <h2 className="section-title">Internship Experience</h2>
+        <article className="surface-card mt-6 p-5 md:p-6">
+          <p className="eyebrow">Dementia Aide</p>
+          <h3 className="mt-2 text-xl font-semibold">Website rebuild and AI caregiver assistant</h3>
+          <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
+            I rebuilt the entire website and developed an AI model based on the founder's published work.
+            The system helps caregivers get answers to their questions and recommends helpful YouTube
+            videos and Amazon items for the topic they are asking about.
+          </p>
+        </article>
       </section>
 
       <section className="content-panel reveal">
