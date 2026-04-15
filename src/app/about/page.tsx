@@ -37,7 +37,7 @@ export default function AboutPage() {
           <p className="eyebrow">Dementia Aide</p>
           <h3 className="mt-2 text-xl font-semibold">Website rebuild and AI caregiver assistant</h3>
           <p className="mt-3 text-sm leading-6 text-[var(--text-secondary)]">
-            I rebuilt the entire website and developed an AI model based on the founder's published work.
+            I rebuilt the entire website and developed an AI model based on the founder&apos;s published work.
             The system helps caregivers get answers to their questions and recommends helpful YouTube
             videos and Amazon items for the topic they are asking about.
           </p>

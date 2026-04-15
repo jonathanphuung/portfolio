@@ -1,5 +1,19 @@
 import Link from "next/link";
-import { HERO_ROTATING_TEXT, SKILLS } from "@/data/portfolio";
+import { SiGithub, SiIntellijidea, SiJavascript, SiNextdotjs, SiNodedotjs, SiReact, SiSupabase, SiTailwindcss, SiTypescript } from "react-icons/si";
+import { HERO_ROTATING_TEXT } from "@/data/portfolio";
+
+const CORE_TOOLS = [
+  { name: "Next.js", Icon: SiNextdotjs, color: "#000000" },
+  { name: "React", Icon: SiReact, color: "#61DAFB" },
+  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
+  { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
+  { name: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
+  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
+  { name: "GitHub", Icon: SiGithub, color: "#181717" },
+  { name: "IntelliJ IDEA", Icon: SiIntellijidea, color: "#000000" },
+];
+const MARQUEE_TOOLS = [...CORE_TOOLS, ...CORE_TOOLS];
 
 export default function HomePage() {
   return (
@@ -54,12 +68,21 @@ export default function HomePage() {
 
       <section className="content-panel reveal">
         <h2 className="section-title">Core Skills</h2>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {SKILLS.map((skill) => (
-            <span key={skill} className="chip">
-              {skill}
-            </span>
-          ))}
+        <div className="logo-carousel mt-6" aria-label="Rotating core skills carousel">
+          <div className="logo-carousel-viewport">
+            <div className="logo-carousel-track">
+              {MARQUEE_TOOLS.map(({ name, Icon, color }, index) => (
+                <div key={`${name}-${index}`} className="logo-carousel-tile">
+                  <div className="logo-carousel-card">
+                    <div className="logo-carousel-glow" style={{ ["--logo-color" as string]: color }} />
+                    <Icon className="logo-icon" aria-hidden="true" style={{ color }} />
+                    <span className="sr-only">{name}</span>
+                    <span className="logo-label">{name}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </main>

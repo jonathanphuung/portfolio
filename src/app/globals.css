@@ -111,6 +111,139 @@ body {
   line-height: 1.15rem;
 }
 
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+}
+
+.logo-carousel {
+  display: grid;
+  place-items: center;
+}
+
+.logo-carousel-viewport {
+  position: relative;
+  width: min(100%, 56rem);
+  margin: 0 auto;
+  padding: 0.15rem 0;
+  overflow: hidden;
+}
+
+.logo-carousel-track {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  width: max-content;
+  animation: carousel-marquee-right 28s linear infinite;
+}
+
+.logo-carousel-tile {
+  flex: 0 0 auto;
+  width: clamp(5.8rem, 12vw, 7rem);
+  height: 6.5rem;
+}
+
+.logo-carousel-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 1.35rem;
+  border: 1px solid var(--border-subtle);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--surface-primary) 90%, white), var(--surface-secondary));
+  box-shadow: var(--shadow-soft);
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.logo-carousel-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 42px rgba(15, 15, 15, 0.12);
+}
+
+.logo-carousel-glow {
+  position: absolute;
+  inset: auto auto -0.7rem -0.7rem;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--logo-color) 34%, transparent), transparent 72%);
+  filter: blur(12px);
+  opacity: 0.55;
+}
+
+.logo-carousel-kicker {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+}
+
+.logo-tile {
+  position: relative;
+  display: flex;
+  min-height: 6.75rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  background: linear-gradient(180deg, color-mix(in oklab, var(--surface-primary) 86%, white), var(--surface-secondary));
+  box-shadow: var(--shadow-soft);
+  animation: tile-float 5.5s ease-in-out infinite;
+  animation-delay: var(--tile-delay, 0ms);
+}
+
+.logo-tile:nth-child(3n) {
+  animation-duration: 6.2s;
+}
+
+.logo-tile:nth-child(4n) {
+  animation-duration: 7s;
+}
+
+.logo-tile:hover {
+  transform: translateY(-4px) scale(1.02);
+}
+
+.logo-tile-orb {
+  position: absolute;
+  inset: auto auto -1.8rem -1rem;
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 9999px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--text-primary) 16%, transparent), transparent 70%);
+  opacity: 0.18;
+  filter: blur(10px);
+  animation: orb-breathe 4.5s ease-in-out infinite;
+}
+
+.logo-icon {
+  position: relative;
+  z-index: 1;
+  font-size: 2.1rem;
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.logo-tile:hover .logo-icon {
+  transform: scale(1.12) rotate(-4deg);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.12));
+}
+
+.logo-label {
+  position: relative;
+  z-index: 1;
+  margin-top: 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
 .btn-primary,
 .btn-secondary,
 .nav-link {
@@ -161,13 +294,76 @@ body {
   }
 }
 
+@keyframes carousel-marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes tile-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes orb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.16;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.24;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     animation: none;
   }
 
+  .logo-tile,
+  .logo-tile-orb {
+    animation: none;
+  }
+
+  .logo-carousel-viewport {
+    overflow: visible;
+  }
+
+  .logo-carousel-track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.9rem;
+  }
+
+  .logo-carousel-glow {
+    display: none;
+  }
+
+  .logo-carousel-card {
+    width: 100%;
+    height: 100%;
+  }
+
+  .logo-carousel-tile {
+    width: clamp(5.8rem, 26vw, 7.2rem);
+  }
+
   .btn-secondary:hover,
-  .nav-link:hover {
+  .nav-link:hover,
+  .logo-tile:hover,
+  .logo-carousel-card:hover {
     transform: none;
   }
 }
@@ -180,5 +376,19 @@ body {
   .hero-panel,
   .content-panel {
     padding: 2.6rem;
+  }
+
+  .logo-carousel-track {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .logo-carousel-track {
+    gap: 1.1rem;
+  }
+
+  .logo-carousel-tile {
+    width: clamp(6rem, 10vw, 7.4rem);
   }
 }
