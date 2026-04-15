@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { TopNav } from "@/components/top-nav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jonathan Phung | Portfolio",
+  title: "Jonathan Phung | SWE Portfolio",
   description:
-    "Computer Science portfolio featuring AI, web development, and research-focused projects.",
+    "Apple-inspired portfolio for Jonathan Phung, a Computer Science student seeking a software engineering internship.",
 };
 
 export default function RootLayout({
@@ -28,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <TopNav />
         {children}
       </body>
     </html>

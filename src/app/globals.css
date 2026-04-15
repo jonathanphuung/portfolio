@@ -1,26 +1,184 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #f5f5f7;
+  --surface-primary: #ffffff;
+  --surface-secondary: #ededf0;
+  --text-primary: #1d1d1f;
+  --text-secondary: #424245;
+  --border-subtle: rgba(29, 29, 31, 0.12);
+  --shadow-soft: 0 16px 44px rgba(15, 15, 15, 0.08);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0b0b0c;
+  --surface-primary: #141416;
+  --surface-secondary: #1c1c1f;
+  --text-primary: #f5f5f7;
+  --text-secondary: #c7c7cc;
+  --border-subtle: rgba(245, 245, 247, 0.16);
+  --shadow-soft: 0 16px 44px rgba(0, 0, 0, 0.34);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid var(--border-subtle);
+  background: color-mix(in oklab, var(--bg-primary) 84%, transparent);
+  backdrop-filter: saturate(170%) blur(18px);
+}
+
+.page-shell {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 2rem 1rem 4rem;
+}
+
+.hero-panel,
+.content-panel {
+  margin-top: 1.25rem;
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.75rem;
+  background: var(--surface-primary);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+}
+
+.hero-title {
+  margin-top: 0.8rem;
+  font-size: clamp(2.1rem, 6vw, 4.9rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  font-weight: 650;
+}
+
+.hero-subtitle {
+  margin-top: 1.2rem;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.hero-rotator {
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.section-title {
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.eyebrow {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text-secondary);
+}
+
+.surface-card {
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  background: var(--surface-primary);
+  box-shadow: var(--shadow-soft);
+}
+
+.chip {
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-secondary);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.75rem;
+  line-height: 1.15rem;
+}
+
+.btn-primary,
+.btn-secondary,
+.nav-link {
+  border-radius: 9999px;
+  border: 1px solid var(--border-subtle);
+  padding: 0.5rem 0.95rem;
+  font-size: 0.84rem;
+  transition: all 220ms ease;
+}
+
+.btn-primary {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary,
+.nav-link {
+  background: var(--surface-secondary);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover,
+.nav-link:hover {
+  transform: translateY(-1px);
+}
+
+.nav-link-active {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.reveal {
+  animation: reveal-up 720ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none;
+  }
+
+  .btn-secondary:hover,
+  .nav-link:hover {
+    transform: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-shell {
+    padding: 2.8rem 1.5rem 5rem;
+  }
+
+  .hero-panel,
+  .content-panel {
+    padding: 2.6rem;
+  }
 }
