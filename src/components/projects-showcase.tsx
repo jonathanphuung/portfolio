@@ -83,6 +83,7 @@ function ProjectCard({
   onOpenLightbox: (index: number) => void;
 }) {
   const [idx, setIdx] = useState(0);
+  const [demoOpen, setDemoOpen] = useState(false);
   const imgs = project.images ?? [];
 
   return (
@@ -122,9 +123,9 @@ function ProjectCard({
         </div>
       )}
 
-      {project.links?.github ? (
+      {project.links?.demo || project.links?.github ? (
         <a
-          href={project.links.github}
+          href={project.links.demo ?? project.links.github}
           target="_blank"
           rel="noreferrer"
           className="inline-block"
@@ -153,7 +154,52 @@ function ProjectCard({
           <li key={h}>{h}</li>
         ))}
       </ul>
+
+      {project.links?.demo && (
+        <div className="mt-4">
+          <button
+            onClick={() => setDemoOpen(true)}
+            className="btn-primary"
+            aria-label="Open demo modal"
+          >
+            View Demo
+          </button>
+        </div>
+      )}
+
+      <DemoModal open={demoOpen} url={project.links?.demo} onClose={() => setDemoOpen(false)} title={project.title} />
     </article>
+  );
+}
+
+function DemoModal({
+  open,
+  url,
+  onClose,
+  title,
+}: {
+  open: boolean;
+  url?: string;
+  onClose: () => void;
+  title: string;
+}) {
+  if (!open || !url) return null;
+
+  return (
+    <div
+      className="fixed inset-0 z-[1000] flex items-center justify-center bg-black/70 p-4"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div className="relative w-full max-w-5xl h-[80vh] bg-white rounded-md overflow-hidden" onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-center justify-between p-2 bg-gray-100 border-b">
+          <h3 className="text-sm font-medium">{title} — Demo</h3>
+          <button onClick={onClose} className="px-3 py-1 rounded bg-gray-200">Close</button>
+        </div>
+        <iframe src={url} className="w-full h-full" title={`${title} demo`} />
+      </div>
+    </div>
   );
 }
 

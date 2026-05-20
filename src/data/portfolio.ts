@@ -23,6 +23,32 @@ export const HERO_ROTATING_TEXT = [
 
 export const PROJECTS: Project[] = [
   {
+    title: "Application Tracker & Resume Fit Analyzer",
+    subtitle:
+      "Next.js · TypeScript · React · Tailwind CSS · Supabase · Google OAuth · Vercel",
+    blurb:
+      "Built and deployed a full-stack internship tracker with resume PDF upload, role-fit analysis, application metrics, and a searchable pipeline dashboard serving 20+ users.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Supabase",
+      "Google OAuth",
+      "Vercel",
+    ],
+    highlights: [
+      "Built and deployed a full-stack internship tracker with resume PDF upload, role-fit analysis, application metrics, and a searchable pipeline dashboard.",
+      "Integrated Google OAuth, Supabase Postgres, and row-level security to support secure cross-device data saving for each user.",
+      "Developed resume matching logic to compare resumes with job descriptions and return matched and missing skills with improvement tips.",
+      "Adopted by 20+ users across devices.",
+    ],
+    links: {
+      demo: "https://applicationtrackerforeveryone.vercel.app/",
+    },
+    images: ["/ApplicationTracker1.png", "/ApplicationTracker2.png"],
+  },
+  {
     title: "AI Caregiver Support Website",
     subtitle:
       "Internship Project · Next.js · AI Assistance · Resource Recommendations",
@@ -34,6 +60,9 @@ export const PROJECTS: Project[] = [
       "Integrated AI responses to provide context-aware support and next-step suggestions",
       "Added recommendation sections for helpful YouTube videos and relevant Amazon products",
     ],
+    links: {
+      demo: "https://dementia-aide.vercel.app/",
+    },
     images: ["/caregiver-site-1.png", "/caregiver-site-2.png", "/caregiver-site-3.png"],
   },
   {
@@ -69,6 +98,7 @@ export const PROJECTS: Project[] = [
     },
     images: ["/project-screenshot-1.png", "/project-screenshot-2.png", "/project-screenshot-3.png"],
   },
+ 
 ];
 
 export const SKILLS = [
