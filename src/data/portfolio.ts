@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
       "REST API integration and clear usage documentation",
     ],
     links: {
-      github: "https://github.com/jonathanphuung/smartStudy",
+      github: "",
     },
     images: ["/ss.png"],
   },
