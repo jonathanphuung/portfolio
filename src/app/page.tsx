@@ -7,15 +7,15 @@ export default function HomePage() {
   return (
     <main id="main-content">
       <section className="hero section-wrap" aria-labelledby="intro-heading">
-        <div className="availability">Open to software engineering internships</div>
+        <div className="availability">San Francisco Bay Area · Open to SWE internships</div>
         <p className="intro-label">Hi, I&apos;m Jonathan.</p>
         <h1 id="intro-heading">
-          I build useful software for real people.
+          Full-stack engineer building useful software.
         </h1>
         <p className="hero-copy">
-          I&apos;m a computer science student at San Francisco State University.
-          Recently, I&apos;ve built tools for caregivers, job seekers, and student
-          researchers.
+          I&apos;m a computer science student at San Francisco State University with
+          hands-on software engineering experience. I build accessible web products
+          with React, Next.js, TypeScript, and PostgreSQL.
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">
@@ -36,7 +36,7 @@ export default function HomePage() {
             <p className="section-kicker">Selected work</p>
             <h2 id="work-heading">Three things I&apos;ve built</h2>
           </div>
-          <p>What each product does, and what I personally worked on.</p>
+          <p>The problem, the data flow, and the engineering decisions behind each product.</p>
         </div>
 
         <div className="project-list">
@@ -57,21 +57,31 @@ export default function HomePage() {
                 <h3>{project.title}</h3>
                 <p className="project-summary">{project.summary}</p>
                 <div className="project-detail">
-                  <span>What I built</span>
-                  <p>{project.contribution}</p>
+                  <span>My ownership</span>
+                  <p>{project.role}</p>
+                </div>
+                <div className="project-implementation">
+                  <span>How it works</span>
+                  <ol aria-label={`${project.title} implementation details`}>
+                    {project.implementation.map((detail) => (
+                      <li key={detail}>{detail}</li>
+                    ))}
+                  </ol>
                 </div>
                 <ul className="skill-list" aria-label={`${project.title} technologies`}>
                   {project.stack.map((item) => (
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
-                <div className="project-links">
-                  {project.links.map((link) => (
-                    <a key={link.href} href={link.href} {...externalProps}>
-                      {link.label} <span aria-hidden="true">↗</span>
-                    </a>
-                  ))}
-                </div>
+                {project.links.length > 0 && (
+                  <div className="project-links">
+                    {project.links.map((link) => (
+                      <a key={link.href} href={link.href} {...externalProps}>
+                        {link.label} <span aria-hidden="true">↗</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
               </div>
             </article>
           ))}
@@ -82,7 +92,7 @@ export default function HomePage() {
         <div className="section-heading">
           <div>
             <p className="section-kicker">Experience</p>
-            <h2 id="experience-heading">What I&apos;m doing now</h2>
+            <h2 id="experience-heading">Experience &amp; education</h2>
           </div>
         </div>
         <div className="experience-grid">
@@ -93,6 +103,15 @@ export default function HomePage() {
             <p>
               I turn Figma designs into a caregiver support app, build recommendation
               features, and connect the product to Shopify&apos;s storefront tools.
+            </p>
+          </article>
+          <article>
+            <p className="experience-date">Computer Science</p>
+            <h3>San Francisco State University</h3>
+            <p className="experience-company">B.S. candidate</p>
+            <p>
+              Building a practical foundation in software engineering, data structures,
+              databases, and full-stack product development.
             </p>
           </article>
           <article>

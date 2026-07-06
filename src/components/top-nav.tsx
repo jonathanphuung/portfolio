@@ -16,6 +16,9 @@ export function TopNav() {
             Resume ↗
           </a>
         </div>
+        <a className="mobile-contact" href="mailto:jonathanphuung@gmail.com">
+          Contact
+        </a>
       </nav>
     </header>
   );
