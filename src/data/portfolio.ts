@@ -1,155 +1,72 @@
 export type Project = {
   title: string;
-  subtitle: string;
-  blurb: string;
+  year: string;
+  summary: string;
+  contribution: string;
   stack: string[];
-  highlights: string[];
-  links?: { github?: string; demo?: string };
-  images?: string[];
+  image: string;
+  imageAlt: string;
+  links: { label: string; href: string }[];
 };
-
-export type TimelineItem = {
-  title: string;
-  period: string;
-  detail: string;
-  type: "education" | "experience" | "project";
-};
-
-export const HERO_ROTATING_TEXT = [
-  "Building full-stack web apps",
-  "Exploring AI-powered products",
-  "Seeking SWE internship opportunities",
-];
 
 export const PROJECTS: Project[] = [
   {
+    title: "Dementia Care Support Platform",
+    year: "2026",
+    summary:
+      "A web app that gives dementia caregivers clear, situation-specific guidance and useful resources.",
+    contribution:
+      "I built the Next.js and TypeScript app, created an advice engine for 13+ caregiving situations, and added searchable videos and product recommendations.",
+    stack: ["Next.js", "TypeScript", "NLP", "Shopify API"],
+    image: "/caregiver-site-1.png",
+    imageAlt: "Dementia care support platform home screen",
+    links: [{ label: "Live site", href: "https://dementia-aide.vercel.app/" }],
+  },
+  {
     title: "Application Tracker & Resume Fit Analyzer",
-    subtitle:
-      "Next.js · TypeScript · React · Tailwind CSS · Supabase · Google OAuth · Vercel",
-    blurb:
-      "Built and deployed a full-stack internship tracker with resume PDF upload, role-fit analysis, application metrics, and a searchable pipeline dashboard serving 20+ users.",
-    stack: [
-      "Next.js",
-      "TypeScript",
-      "React",
-      "Tailwind CSS",
-      "Supabase",
-      "Google OAuth",
-      "Vercel",
+    year: "2025",
+    summary:
+      "A full-stack tool for tracking internship applications and comparing a resume with a job description.",
+    contribution:
+      "I built resume PDF upload, skill matching, application metrics, Google sign-in, and per-user data storage with Supabase row-level security.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Google OAuth"],
+    image: "/ApplicationTracker1.png",
+    imageAlt: "Application tracker dashboard with job cards and progress metrics",
+    links: [
+      {
+        label: "Live site",
+        href: "https://applicationtrackerforeveryone.vercel.app/",
+      },
     ],
-    highlights: [
-      "Built and deployed a full-stack internship tracker with resume PDF upload, role-fit analysis, application metrics, and a searchable pipeline dashboard.",
-      "Integrated Google OAuth, Supabase Postgres, and row-level security to support secure cross-device data saving for each user.",
-      "Developed resume matching logic to compare resumes with job descriptions and return matched and missing skills with improvement tips.",
-      "Adopted by 20+ users across devices.",
-    ],
-    links: {
-      demo: "https://applicationtrackerforeveryone.vercel.app/",
-    },
-    images: ["/ApplicationTracker1.png", "/ApplicationTracker2.png"],
   },
   {
-    title: "AI Caregiver Support Website",
-    subtitle:
-      "Internship Project · Next.js · AI Assistance · Resource Recommendations",
-    blurb:
-      "Support platform for caregivers with practical guidance for elderly care, including AI-powered responses plus recommended YouTube videos and Amazon items.",
-    stack: ["Next.js", "React", "JavaScript", "AI Integration", "Web Development"],
-    highlights: [
-      "Built an accessible Q&A experience to help caregivers handle common elderly-care scenarios",
-      "Integrated AI responses to provide context-aware support and next-step suggestions",
-      "Added recommendation sections for helpful YouTube videos and relevant Amazon products",
+    title: "Sleep Research Data Collection Platform",
+    year: "2025",
+    summary:
+      "A research platform that collects anonymized student sleep surveys and stores structured responses for analysis.",
+    contribution:
+      "I built the survey flow, validated submissions with Zod, created secure API routes, and designed the PostgreSQL data model with Supabase row-level security.",
+    stack: ["Next.js", "TypeScript", "Supabase", "Zod"],
+    image: "/project-screenshot-1.png",
+    imageAlt: "Sleep research platform landing page",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/jonathanphuung/sleep-research",
+      },
     ],
-    links: {
-      demo: "https://dementia-aide.vercel.app/",
-    },
-    images: ["/caregiver-site-1.png", "/caregiver-site-2.png", "/caregiver-site-3.png"],
   },
-  {
-    title: "AI-Enhanced Smart Study Summarizer",
-    subtitle: "Python · FastAPI · JavaScript · HTML/CSS · REST APIs",
-    blurb:
-      "Web app that generates concise summaries from academic text to speed up studying using transformer-based NLP.",
-    stack: ["Python", "FastAPI", "JavaScript", "HTML", "CSS"],
-    highlights: [
-      "Hugging Face Transformers (BART) for abstractive summarization",
-      "FastAPI backend with a simple, accessible frontend",
-      "REST API integration and clear usage documentation",
-    ],
-    links: {
-      github: "",
-    },
-    images: ["/ss.png"],
-  },
-  {
-    title: "Sleep Research Survey Platform",
-    subtitle: "Web App · JavaScript · Supabase · Data Collection",
-    blurb:
-      "Research website where students complete a guided sleep habits survey and receive personalized feedback, while responses are stored in Supabase for analysis.",
-    stack: ["JavaScript", "Web Development", "Supabase", "UX", "Data Analysis"],
-    highlights: [
-      "Built a complete participant flow: study landing page, consent/disclaimer, and structured survey form",
-      "Captured student responses and persisted records in Supabase for research review",
-      "Generated personalized sleep analysis cards based on survey inputs",
-      "Designed an accessible, student-friendly interface for quick completion",
-    ],
-    links: {
-      github: "https://github.com/jonathanphuung/sleep-research",
-    },
-    images: ["/project-screenshot-1.png", "/project-screenshot-2.png", "/project-screenshot-3.png"],
-  },
- 
 ];
 
 export const SKILLS = [
   "Java",
+  "Python",
   "JavaScript",
   "TypeScript",
   "React",
   "Next.js",
   "Node.js",
-  "FastAPI",
   "Supabase",
-  "TailwindCSS",
-  "Git/GitHub",
-  "VS Code",
-  "IntelliJ",
-];
-
-export const TIMELINE_ITEMS: TimelineItem[] = [
-  {
-    title: "San Francisco State University",
-    period: "2023 - 2027 (Expected)",
-    detail:
-      "B.S. in Computer Science with emphasis on software engineering, data structures, systems, and real-world product development.",
-    type: "education",
-  },
-  {
-    title: "Dementia Aide Internship",
-    period: "Internship",
-    detail:
-      "Rebuilt the company's website end to end and created an AI model based on the founder's published work to answer caregiver questions and recommend relevant YouTube videos and Amazon items.",
-    type: "experience",
-  },
-  {
-    title: "Fulfillment Expert Team Captain @ Target",
-    period: "Current",
-    detail:
-      "Led high-performing operations teams to district-leading outcomes through clear communication, process improvement, and high-pressure execution.",
-    type: "experience",
-  },
-  {
-    title: "AI-Enhanced Smart Study Summarizer",
-    period: "Project",
-    detail:
-      "Built a FastAPI + NLP web app that turns dense study material into concise summaries to improve learning speed.",
-    type: "project",
-  },
-  {
-    title: "Caregiver Support Platform",
-    period: "Project",
-    detail:
-      "Developed a Next.js support product with AI-assisted guidance and curated educational recommendations for caregivers.",
-    type: "project",
-  },
+  "PostgreSQL",
+  "Git",
 ];

@@ -1,88 +1,134 @@
-import Link from "next/link";
-import { SiGithub, SiIntellijidea, SiJavascript, SiNextdotjs, SiNodedotjs, SiReact, SiSupabase, SiTailwindcss, SiTypescript } from "react-icons/si";
-import { HERO_ROTATING_TEXT } from "@/data/portfolio";
+import Image from "next/image";
+import { PROJECTS, SKILLS } from "@/data/portfolio";
 
-const CORE_TOOLS = [
-  { name: "Next.js", Icon: SiNextdotjs, color: "#000000" },
-  { name: "React", Icon: SiReact, color: "#61DAFB" },
-  { name: "TypeScript", Icon: SiTypescript, color: "#3178C6" },
-  { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E" },
-  { name: "Node.js", Icon: SiNodedotjs, color: "#339933" },
-  { name: "Supabase", Icon: SiSupabase, color: "#3ECF8E" },
-  { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8" },
-  { name: "GitHub", Icon: SiGithub, color: "#181717" },
-  { name: "IntelliJ IDEA", Icon: SiIntellijidea, color: "#000000" },
-];
-const MARQUEE_TOOLS = [...CORE_TOOLS, ...CORE_TOOLS];
+const externalProps = { target: "_blank", rel: "noreferrer" } as const;
 
 export default function HomePage() {
   return (
-    <main className="page-shell">
-      <section className="hero-panel reveal">
-        <p className="eyebrow">Software Engineering Portfolio</p>
-        <h1 className="hero-title">Jonathan Phung</h1>
-        <p className="hero-subtitle">
-          Computer Science student at San Francisco State University seeking a
-          Software Engineering Internship.
+    <main id="main-content">
+      <section className="hero section-wrap" aria-labelledby="intro-heading">
+        <div className="availability">Open to software engineering internships</div>
+        <p className="intro-label">Hi, I&apos;m Jonathan.</p>
+        <h1 id="intro-heading">
+          I build useful software for real people.
+        </h1>
+        <p className="hero-copy">
+          I&apos;m a computer science student at San Francisco State University.
+          Recently, I&apos;ve built tools for caregivers, job seekers, and student
+          researchers.
         </p>
-        <p className="hero-rotator">{HERO_ROTATING_TEXT.join(" • ")}</p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link href="/projects" className="btn-primary">
-            View Projects
-          </Link>
-          <a href="/Resume.pdf" target="_blank" rel="noreferrer" className="btn-secondary">
-            Download Resume
+        <div className="hero-actions">
+          <a className="button button-primary" href="#work">
+            See my work
           </a>
-          <Link href="/contact" className="btn-secondary">
-            Contact
-          </Link>
+          <a className="button" href="/Resume.pdf" {...externalProps}>
+            Resume <span aria-hidden="true">↗</span>
+          </a>
+          <a className="text-link" href="mailto:jonathanphuung@gmail.com">
+            Email me
+          </a>
         </div>
       </section>
 
-      <section className="content-panel reveal">
-        <h2 className="section-title">What I Bring</h2>
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <article className="surface-card p-5">
-            <h3 className="text-lg font-semibold">Engineering Fundamentals</h3>
-            <p className="mt-2 text-sm text-[var(--text-secondary)]">
-              Strong foundation in software construction, APIs, and practical
-              product thinking.
-            </p>
-          </article>
-          <article className="surface-card p-5">
-            <h3 className="text-lg font-semibold">Leadership</h3>
-            <p className="mt-2 text-sm text-[var(--text-secondary)]">
-              Experience leading high-performing teams with communication and
-              execution under pressure.
-            </p>
-          </article>
-          <article className="surface-card p-5">
-            <h3 className="text-lg font-semibold">Product Focus</h3>
-            <p className="mt-2 text-sm text-[var(--text-secondary)]">
-              I enjoy building software that solves real user problems with
-              clear UX and measurable impact.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section className="content-panel reveal">
-        <h2 className="section-title">Core Skills</h2>
-        <div className="logo-carousel mt-6" aria-label="Rotating core skills carousel">
-          <div className="logo-carousel-viewport">
-            <div className="logo-carousel-track">
-              {MARQUEE_TOOLS.map(({ name, Icon, color }, index) => (
-                <div key={`${name}-${index}`} className="logo-carousel-tile">
-                  <div className="logo-carousel-card">
-                    <div className="logo-carousel-glow" style={{ ["--logo-color" as string]: color }} />
-                    <Icon className="logo-icon" aria-hidden="true" style={{ color }} />
-                    <span className="sr-only">{name}</span>
-                    <span className="logo-label">{name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+      <section className="section-wrap" id="work" aria-labelledby="work-heading">
+        <div className="section-heading">
+          <div>
+            <p className="section-kicker">Selected work</p>
+            <h2 id="work-heading">Three things I&apos;ve built</h2>
           </div>
+          <p>What each product does, and what I personally worked on.</p>
+        </div>
+
+        <div className="project-list">
+          {PROJECTS.map((project, index) => (
+            <article className="project" key={project.title}>
+              <div className="project-image-wrap">
+                <Image
+                  src={project.image}
+                  alt={project.imageAlt}
+                  width={1200}
+                  height={700}
+                  priority={index === 0}
+                  className="project-image"
+                />
+              </div>
+              <div className="project-copy">
+                <div className="project-number">0{index + 1} / {project.year}</div>
+                <h3>{project.title}</h3>
+                <p className="project-summary">{project.summary}</p>
+                <div className="project-detail">
+                  <span>What I built</span>
+                  <p>{project.contribution}</p>
+                </div>
+                <ul className="skill-list" aria-label={`${project.title} technologies`}>
+                  {project.stack.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <div className="project-links">
+                  {project.links.map((link) => (
+                    <a key={link.href} href={link.href} {...externalProps}>
+                      {link.label} <span aria-hidden="true">↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="section-wrap experience" id="about" aria-labelledby="experience-heading">
+        <div className="section-heading">
+          <div>
+            <p className="section-kicker">Experience</p>
+            <h2 id="experience-heading">What I&apos;m doing now</h2>
+          </div>
+        </div>
+        <div className="experience-grid">
+          <article>
+            <p className="experience-date">Sep 2025 - present</p>
+            <h3>Software Engineering Intern</h3>
+            <p className="experience-company">Dementia Aide</p>
+            <p>
+              I turn Figma designs into a caregiver support app, build recommendation
+              features, and connect the product to Shopify&apos;s storefront tools.
+            </p>
+          </article>
+          <article>
+            <p className="experience-date">Dec 2022 - present</p>
+            <h3>Fulfillment Expert Team Captain</h3>
+            <p className="experience-company">Target</p>
+            <p>
+              I coordinate teams of 7 to 20 people, set daily priorities, and help
+              the team solve problems when plans change.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section-wrap skills" aria-labelledby="skills-heading">
+        <p className="section-kicker">Tools I use</p>
+        <h2 id="skills-heading">The short version</h2>
+        <ul className="skill-list skill-list-large">
+          {SKILLS.map((skill) => <li key={skill}>{skill}</li>)}
+        </ul>
+      </section>
+
+      <section className="contact section-wrap" id="contact" aria-labelledby="contact-heading">
+        <p className="section-kicker">Get in touch</p>
+        <h2 id="contact-heading">Have an internship or a project in mind?</h2>
+        <p>I&apos;d be glad to hear about it.</p>
+        <div className="hero-actions">
+          <a className="button button-primary" href="mailto:jonathanphuung@gmail.com">
+            Email Jonathan
+          </a>
+          <a className="text-link" href="https://www.linkedin.com/in/jonathanphuung" {...externalProps}>
+            LinkedIn ↗
+          </a>
+          <a className="text-link" href="https://github.com/jonathanphuung" {...externalProps}>
+            GitHub ↗
+          </a>
         </div>
       </section>
     </main>
