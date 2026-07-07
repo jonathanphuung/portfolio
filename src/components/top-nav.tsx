@@ -13,7 +13,7 @@ export function TopNav() {
           <Link href="/#about">About</Link>
           <Link href="/#contact">Contact</Link>
           <a className="nav-resume" href="/Resume.pdf" target="_blank" rel="noreferrer">
-            Resume ↗
+            Resume
           </a>
         </div>
         <a className="mobile-contact" href="mailto:jonathanphuung@gmail.com">

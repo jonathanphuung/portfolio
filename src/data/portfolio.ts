@@ -2,11 +2,15 @@ export type Project = {
   title: string;
   year: string;
   summary: string;
+  impact: string;
   role: string;
+  roleLabel: string;
+  built: string[];
   implementation: string[];
   stack: string[];
   image: string;
   imageAlt: string;
+  imageCaption: string;
   links: { label: string; href: string }[];
 };
 
@@ -15,17 +19,21 @@ export const PROJECTS: Project[] = [
     title: "Dementia Care Support Platform",
     year: "2026",
     summary:
-      "Caregivers describe a real situation in plain language—such as nighttime wandering or refusing food—and receive practical next steps instead of a generic chat response.",
-    role: "I owned the caregiver search experience, response engine, resource ranking, safety handling, and commerce integration in a production Next.js application.",
+      "Caregivers type what is happening, like nighttime wandering or refusing food, and the app gives practical next steps.",
+    impact: "Helps caregivers get useful guidance without digging through long articles or guessing what to search.",
+    role: "I built the search flow, the answer logic, the resource matching, the safety checks, and the Shopify checkout connection.",
+    roleLabel: "Software engineering intern",
+    built: ["Search", "Answer logic", "Safety checks", "Shopify checkout"],
     implementation: [
-      "Built a deterministic TypeScript pipeline that tokenizes each query, expands caregiving synonyms, and classifies it into a specific care scenario and category.",
-      "Mapped 25+ scenarios to structured guidance, then ranked curated resources by keyword overlap, category, and scenario so every answer includes relevant, trusted follow-up material.",
-      "Added emergency phrase detection for stroke symptoms, missing-person events, medication risks, falls, and immediate safety threats, returning prominent action steps and authoritative sources.",
-      "Connected cart items to Shopify variant IDs and used the Storefront GraphQL API to create a cart and send users into Shop Pay checkout.",
+      "Turned caregiver questions into categories the app can understand, such as wandering, food refusal, falls, and medication issues.",
+      "Matched more than 25 care scenarios to clear guidance and related resources.",
+      "Added safety checks for emergencies, including stroke symptoms, missing-person situations, medication risks, and falls.",
+      "Connected product cards to Shopify so users can add items and check out through Shop Pay.",
     ],
     stack: ["Next.js", "TypeScript", "Search ranking", "Shopify GraphQL"],
     image: "/caregiver-site-1.png",
     imageAlt: "Dementia care support platform home screen",
+    imageCaption: "Caregiver guidance flow",
     links: [
       { label: "Live site", href: "https://dementia-aide.vercel.app/" },
       { label: "Source code", href: "https://github.com/jonathanphuung/DementiaAide" },
@@ -35,17 +43,21 @@ export const PROJECTS: Project[] = [
     title: "Application Tracker & Resume Fit Analyzer",
     year: "2025",
     summary:
-      "Job seekers upload a résumé, paste a job description, and get an explainable fit score while managing every application from saved through offer or rejection.",
-    role: "I designed and built the parsing APIs, matching algorithm, application pipeline, authentication flow, and local-to-cloud data synchronization.",
+      "Job seekers upload a resume, paste a job post, and get a clear fit score while tracking each application.",
+    impact: "Gives job seekers a clearer way to track applications and see what their resume is missing.",
+    role: "I built the resume parser, the job matching logic, the application tracker, Google sign-in, and the Supabase database setup.",
+    roleLabel: "Software engineering project",
+    built: ["PDF parsing", "Fit scoring", "Google sign-in", "Supabase database"],
     implementation: [
-      "Created a PDF upload route that validates file type and a 4 MB limit, extracts text with pdf-parse, removes noisy contact data, and returns actionable errors for unreadable files.",
-      "Implemented an explainable scoring algorithm that normalizes skill aliases, separates matched and missing requirements, detects role signals such as ownership and testing, and generates targeted résumé recommendations.",
-      "Built a hybrid persistence layer: signed-out users save to localStorage, then existing applications are assigned UUIDs and migrated into Supabase after Google OAuth sign-in.",
-      "Designed the Postgres applications table, status constraints, indexes, update trigger, and row-level security policies that restrict CRUD operations to the authenticated user's rows.",
+      "Built a PDF upload route that checks file type and size, extracts resume text, and gives useful errors when a file cannot be read.",
+      "Created a scoring system that shows matched skills, missing skills, and specific ways to improve the resume.",
+      "Let signed-out users save applications in the browser, then move that data into Supabase after Google sign-in.",
+      "Set up the Postgres tables, indexes, status rules, update trigger, and row-level security policies.",
     ],
     stack: ["Next.js", "TypeScript", "PDF parsing", "Supabase/PostgreSQL"],
     image: "/ApplicationTracker1.png",
     imageAlt: "Application tracker dashboard with job cards and progress metrics",
+    imageCaption: "Resume fit dashboard",
     links: [
       {
         label: "Live site",
@@ -61,17 +73,21 @@ export const PROJECTS: Project[] = [
     title: "Sleep Research Data Collection Platform",
     year: "2025",
     summary:
-      "A structured survey system for collecting consistent, anonymized student sleep data that researchers can analyze without relying on loosely formatted form responses.",
-    role: "I built the participant survey, validation boundary, submission API, and relational data model for secure research-data collection.",
+      "A survey app for collecting consistent student sleep data without messy free-form responses.",
+    impact: "Helps researchers collect cleaner sleep data that is easier to review and analyze later.",
+    role: "I built the survey flow, validation, submission API, and database structure.",
+    roleLabel: "Software engineering project",
+    built: ["Survey flow", "Validation", "API routes", "Database design"],
     implementation: [
-      "Designed a guided survey flow that converts sleep habits and academic context into a consistent payload instead of free-form responses.",
-      "Used shared Zod schemas to reject incomplete or malformed answers before they reach the database, with field-level feedback for participants.",
-      "Created Next.js route handlers that validate submissions server-side and write normalized records to Supabase PostgreSQL.",
-      "Separated survey responses from direct identity fields and applied row-level security so public participants can submit data without receiving access to the research dataset.",
+      "Designed a step-by-step survey for sleep habits and school context.",
+      "Used Zod to catch missing or invalid answers before they reach the database.",
+      "Created Next.js API routes that validate submissions and save clean records to Supabase.",
+      "Separated survey answers from identity fields and used row-level security to protect the dataset.",
     ],
     stack: ["Next.js", "TypeScript", "Supabase", "Zod"],
     image: "/project-screenshot-1.png",
     imageAlt: "Sleep research platform landing page",
+    imageCaption: "Research survey flow",
     links: [],
   },
 ];

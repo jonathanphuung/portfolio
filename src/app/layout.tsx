@@ -7,31 +7,31 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Jonathan Phung | Full-Stack Software Engineer",
+  title: "Jonathan Phung | Software Engineer",
   description:
-    "Jonathan Phung is a full-stack software engineer and SFSU computer science student building accessible products with React, Next.js, TypeScript, and PostgreSQL.",
+    "Jonathan Phung is an SFSU computer science student building web apps with React, Next.js, TypeScript, and PostgreSQL.",
   applicationName: "Jonathan Phung Portfolio",
   authors: [{ name: "Jonathan Phung" }],
   creator: "Jonathan Phung",
   keywords: [
     "Jonathan Phung",
     "software engineer",
-    "full-stack developer",
-    "React developer",
-    "Next.js developer",
+    "web app engineer",
+    "React engineer",
+    "Next.js engineer",
     "San Francisco software engineer",
     "software engineering intern",
   ],
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Jonathan Phung | Full-Stack Software Engineer",
-    description: "Full-stack projects, engineering experience, and contact information.",
+    title: "Jonathan Phung | Software Engineer",
+    description: "Projects, experience, and contact information.",
     type: "website",
   },
   twitter: {
     card: "summary",
-    title: "Jonathan Phung | Full-Stack Software Engineer",
-    description: "Full-stack projects, engineering experience, and contact information.",
+    title: "Jonathan Phung | Software Engineer",
+    description: "Projects, experience, and contact information.",
   },
 };
 

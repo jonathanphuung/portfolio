@@ -7,22 +7,36 @@ export default function HomePage() {
   return (
     <main id="main-content">
       <section className="hero section-wrap" aria-labelledby="intro-heading">
-        <div className="availability">San Francisco Bay Area · Open to SWE internships</div>
+        <div className="availability">San Francisco Bay Area / open to SWE internships</div>
         <p className="intro-label">Hi, I&apos;m Jonathan.</p>
         <h1 id="intro-heading">
-          Full-stack engineer building useful software.
+          CS student building web apps end-to-end.
         </h1>
         <p className="hero-copy">
-          I&apos;m a computer science student at San Francisco State University with
-          hands-on software engineering experience. I build accessible web products
-          with React, Next.js, TypeScript, and PostgreSQL.
+          I&apos;ve built caregiver tools, resume and job tracking apps, and research
+          data collection systems. I care about clear interfaces, reliable data,
+          and apps that are easy to understand.
         </p>
+        <div className="proof-bar" aria-label="Portfolio highlights">
+          <div>
+            <strong>3</strong>
+            <span>shipped web app projects</span>
+          </div>
+          <div>
+            <strong>SWE intern</strong>
+            <span>Dementia Aide</span>
+          </div>
+          <div>
+            <strong>UI, APIs, and data</strong>
+            <span>React, Next.js, Supabase, PostgreSQL</span>
+          </div>
+        </div>
         <div className="hero-actions">
           <a className="button button-primary" href="#work">
             See my work
           </a>
           <a className="button" href="/Resume.pdf" {...externalProps}>
-            Resume <span aria-hidden="true">↗</span>
+            Resume
           </a>
           <a className="text-link" href="mailto:jonathanphuung@gmail.com">
             Email me
@@ -36,7 +50,7 @@ export default function HomePage() {
             <p className="section-kicker">Selected work</p>
             <h2 id="work-heading">Three things I&apos;ve built</h2>
           </div>
-          <p>The problem, the data flow, and the engineering decisions behind each product.</p>
+          <p>What each app does, what I built, and why it matters.</p>
         </div>
 
         <div className="project-list">
@@ -51,11 +65,27 @@ export default function HomePage() {
                   priority={index === 0}
                   className="project-image"
                 />
+                <p className="image-caption">{project.imageCaption}</p>
               </div>
               <div className="project-copy">
                 <div className="project-number">0{index + 1} / {project.year}</div>
                 <h3>{project.title}</h3>
                 <p className="project-summary">{project.summary}</p>
+                <p className="project-impact">{project.impact}</p>
+                <dl className="project-facts" aria-label={`${project.title} quick facts`}>
+                  <div>
+                    <dt>Role</dt>
+                    <dd>{project.roleLabel}</dd>
+                  </div>
+                  <div>
+                    <dt>Built</dt>
+                    <dd>{project.built.join(", ")}</dd>
+                  </div>
+                  <div>
+                    <dt>Stack</dt>
+                    <dd>{project.stack.join(", ")}</dd>
+                  </div>
+                </dl>
                 <div className="project-detail">
                   <span>My ownership</span>
                   <p>{project.role}</p>
@@ -77,7 +107,7 @@ export default function HomePage() {
                   <div className="project-links">
                     {project.links.map((link) => (
                       <a key={link.href} href={link.href} {...externalProps}>
-                        {link.label} <span aria-hidden="true">↗</span>
+                        {link.label}
                       </a>
                     ))}
                   </div>
@@ -101,8 +131,8 @@ export default function HomePage() {
             <h3>Software Engineering Intern</h3>
             <p className="experience-company">Dementia Aide</p>
             <p>
-              I turn Figma designs into a caregiver support app, build recommendation
-              features, and connect the product to Shopify&apos;s storefront tools.
+              I turn Figma screens into working product features, build caregiver
+              guidance tools, and connect the app to Shopify checkout.
             </p>
           </article>
           <article>
@@ -110,8 +140,8 @@ export default function HomePage() {
             <h3>San Francisco State University</h3>
             <p className="experience-company">B.S. candidate</p>
             <p>
-              Building a practical foundation in software engineering, data structures,
-              databases, and full-stack product development.
+              Studying software engineering, data structures, databases, and how to
+              build web apps from idea to release.
             </p>
           </article>
           <article>
@@ -119,11 +149,23 @@ export default function HomePage() {
             <h3>Fulfillment Expert Team Captain</h3>
             <p className="experience-company">Target</p>
             <p>
-              I coordinate teams of 7 to 20 people, set daily priorities, and help
-              the team solve problems when plans change.
+              I coordinate teams of 7 to 20 people, set priorities for the day, and
+              help the team adjust when things get busy or plans change.
             </p>
           </article>
         </div>
+      </section>
+
+      <section className="section-wrap looking" aria-labelledby="looking-heading">
+        <div>
+          <p className="section-kicker">Currently looking for</p>
+          <h2 id="looking-heading">Software engineering internships</h2>
+        </div>
+        <p>
+          I&apos;m looking for frontend, product engineering, or web platform teams where
+          I can keep building real features, work with other engineers, and learn
+          from code reviews.
+        </p>
       </section>
 
       <section className="section-wrap skills" aria-labelledby="skills-heading">
@@ -136,17 +178,17 @@ export default function HomePage() {
 
       <section className="contact section-wrap" id="contact" aria-labelledby="contact-heading">
         <p className="section-kicker">Get in touch</p>
-        <h2 id="contact-heading">Have an internship or a project in mind?</h2>
-        <p>I&apos;d be glad to hear about it.</p>
+        <h2 id="contact-heading">Looking for a software engineering intern?</h2>
+        <p>I&apos;d be happy to talk about frontend, product engineering, or web platform internship opportunities.</p>
         <div className="hero-actions">
           <a className="button button-primary" href="mailto:jonathanphuung@gmail.com">
             Email Jonathan
           </a>
           <a className="text-link" href="https://www.linkedin.com/in/jonathanphuung" {...externalProps}>
-            LinkedIn ↗
+            LinkedIn
           </a>
           <a className="text-link" href="https://github.com/jonathanphuung" {...externalProps}>
-            GitHub ↗
+            GitHub
           </a>
         </div>
       </section>
