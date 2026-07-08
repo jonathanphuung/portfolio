@@ -13,9 +13,7 @@ export default function HomePage() {
           CS student building web apps end-to-end.
         </h1>
         <p className="hero-copy">
-          I&apos;ve built caregiver tools, resume and job tracking apps, and research
-          data collection systems. I care about clear interfaces, reliable data,
-          and apps that are easy to understand.
+          Most of the projects I build start with a simple question: how can I make this easier for someone? Whether it&apos;s a tool for caregivers or an app to organize a job search, I enjoy taking an idea and turning it into something people can use.
         </p>
         <div className="proof-bar" aria-label="Portfolio highlights">
           <div>
