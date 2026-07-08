@@ -131,8 +131,7 @@ export default function HomePage() {
             <h3>Software Engineering Intern</h3>
             <p className="experience-company">Dementia Aide</p>
             <p>
-              I turn Figma screens into working product features, build caregiver
-              guidance tools, and connect the app to Shopify checkout.
+              I built a caregiver guidance assistant that helps families of people with dementia find the right care and support from the ground up. I built the search ranking, the Next.js frontend, and connected the app to Shopify for product recommendations and checkout.
             </p>
           </article>
           <article>
@@ -149,8 +148,8 @@ export default function HomePage() {
             <h3>Fulfillment Expert Team Captain</h3>
             <p className="experience-company">Target</p>
             <p>
-              I coordinate teams of 7 to 20 people, set priorities for the day, and
-              help the team adjust when things get busy or plans change.
+              I lead teams of 7 to 20 people, set priorities for the day, and
+              coordinate with other teams to meet strict deadlines.
             </p>
           </article>
         </div>
@@ -162,9 +161,7 @@ export default function HomePage() {
           <h2 id="looking-heading">Software engineering internships</h2>
         </div>
         <p>
-          I&apos;m looking for frontend, product engineering, or web platform teams where
-          I can keep building real features, work with other engineers, and learn
-          from code reviews.
+          I&apos;m looking for a team where I can continue building real features, collaborate closely with other engineers, and grow through mentorship and thoughtful code reviews.
         </p>
       </section>
 

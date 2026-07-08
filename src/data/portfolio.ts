@@ -33,10 +33,10 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "TypeScript", "Search ranking", "Shopify GraphQL"],
     image: "/caregiver-site-1.png",
     imageAlt: "Dementia care support platform home screen",
-    imageCaption: "Caregiver guidance flow",
+    imageCaption: "Caregiver guidance assistant",
     links: [
-      { label: "Live site", href: "https://dementia-aide.vercel.app/" },
-      { label: "Source code", href: "https://github.com/jonathanphuung/DementiaAide" },
+      { label: "Live site ↗ ", href: "https://dementia-aide.vercel.app/" },
+      { label: "Source code ↗ ", href: "https://github.com/jonathanphuung/DementiaAide" },
     ],
   },
   {
@@ -57,14 +57,14 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "TypeScript", "PDF parsing", "Supabase/PostgreSQL"],
     image: "/ApplicationTracker1.png",
     imageAlt: "Application tracker dashboard with job cards and progress metrics",
-    imageCaption: "Resume fit dashboard",
+    imageCaption: "Application tracker & Resume fit analyzer",
     links: [
       {
-        label: "Live site",
+        label: "Live site ↗ ",
         href: "https://applicationtrackerforeveryone.vercel.app/",
       },
       {
-        label: "Source code",
+        label: "Source code ↗ ",
         href: "https://github.com/jonathanphuung/InternshipTracker",
       },
     ],
@@ -87,7 +87,7 @@ export const PROJECTS: Project[] = [
     stack: ["Next.js", "TypeScript", "Supabase", "Zod"],
     image: "/project-screenshot-1.png",
     imageAlt: "Sleep research platform landing page",
-    imageCaption: "Research survey flow",
+    imageCaption: "Sleep research data collection platform",
     links: [],
   },
 ];
