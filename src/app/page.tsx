@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { PROJECTS, SKILLS } from "@/data/portfolio";
+import { ProjectGallery } from "@/components/project-gallery";
 
 const externalProps = { target: "_blank", rel: "noreferrer" } as const;
 
@@ -17,16 +17,16 @@ export default function HomePage() {
         </p>
         <div className="proof-bar" aria-label="Portfolio highlights">
           <div>
-            <strong>3</strong>
-            <span>shipped web app projects</span>
+            <strong>4</strong>
+            <span>shipped software projects</span>
           </div>
           <div>
             <strong>SWE intern</strong>
             <span>Dementia Aide</span>
           </div>
           <div>
-            <strong>UI, APIs, and data</strong>
-            <span>React, Next.js, Supabase, PostgreSQL</span>
+            <strong>UI, APIs, and backend systems</strong>
+            <span>React, Next.js, Java, Spring Boot, PostgreSQL</span>
           </div>
         </div>
         <div className="hero-actions">
@@ -46,7 +46,7 @@ export default function HomePage() {
         <div className="section-heading">
           <div>
             <p className="section-kicker">Selected work</p>
-            <h2 id="work-heading">Three things I&apos;ve built</h2>
+            <h2 id="work-heading">Four things I&apos;ve built</h2>
           </div>
           <p>What each app does, what I built, and why it matters.</p>
         </div>
@@ -54,17 +54,14 @@ export default function HomePage() {
         <div className="project-list">
           {PROJECTS.map((project, index) => (
             <article className="project" key={project.title}>
-              <div className="project-image-wrap">
-                <Image
-                  src={project.image}
-                  alt={project.imageAlt}
-                  width={1200}
-                  height={700}
-                  priority={index === 0}
-                  className="project-image"
-                />
-                <p className="image-caption">{project.imageCaption}</p>
-              </div>
+              <ProjectGallery
+                images={project.images ?? [{
+                  src: project.image,
+                  alt: project.imageAlt,
+                  caption: project.imageCaption,
+                }]}
+                priority={index === 0}
+              />
               <div className="project-copy">
                 <div className="project-number">0{index + 1} / {project.year}</div>
                 <h3>{project.title}</h3>

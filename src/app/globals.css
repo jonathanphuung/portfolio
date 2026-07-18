@@ -322,6 +322,35 @@ a { color: inherit; }
   backdrop-filter: blur(12px);
 }
 
+.gallery-controls {
+  position: absolute;
+  right: .85rem;
+  bottom: 3.55rem;
+  z-index: 3;
+  display: flex;
+  gap: .45rem;
+  border: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
+  border-radius: 999px;
+  padding: .45rem;
+  background: color-mix(in srgb, white 90%, transparent);
+  backdrop-filter: blur(12px);
+}
+
+.gallery-controls button {
+  width: .55rem;
+  height: .55rem;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: #aaa497;
+  cursor: pointer;
+}
+
+.gallery-controls button.active {
+  background: var(--accent);
+  transform: scale(1.2);
+}
+
 .project-copy {
   display: flex;
   flex-direction: column;

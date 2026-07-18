@@ -11,10 +11,40 @@ export type Project = {
   image: string;
   imageAlt: string;
   imageCaption: string;
+  images?: { src: string; alt: string; caption: string }[];
   links: { label: string; href: string }[];
 };
 
 export const PROJECTS: Project[] = [
+  {
+    title: "FulfillFlow",
+    year: "2026",
+    summary:
+      "A warehouse fulfillment API that reserves inventory safely and turns orders into asynchronous picking work.",
+    impact: "Keeps stock counts accurate during concurrent orders and prevents committed work from being lost when services fail.",
+    role: "I designed and built the API, database transactions, event pipeline, security model, caching, observability, and automated test workflow.",
+    roleLabel: "Backend engineering project",
+    built: ["Inventory locking", "Async order processing", "JWT roles", "Full-stack CI"],
+    implementation: [
+      "Used PostgreSQL transactions and row locks to reserve inventory without overselling under concurrent requests.",
+      "Implemented a transactional outbox that reliably publishes committed order events to RabbitMQ for asynchronous fulfillment.",
+      "Added Redis catalog caching, JWT role-based access, Flyway migrations, and Prometheus application metrics.",
+      "Built integration and smoke tests that exercise the API with real PostgreSQL, RabbitMQ, and Redis services in GitHub Actions.",
+    ],
+    stack: ["Java 21", "Spring Boot", "PostgreSQL", "RabbitMQ", "Redis", "Docker"],
+    image: "/fulfillflow-swagger.png",
+    imageAlt: "FulfillFlow Swagger API documentation",
+    imageCaption: "Interactive API documentation",
+    images: [
+      { src: "/fulfillflow-swagger.png", alt: "FulfillFlow Swagger API documentation showing seven controller groups", caption: "Interactive API documentation" },
+      { src: "/fulfillflow-products.png", alt: "FulfillFlow product API response with seeded warehouse inventory", caption: "Seeded product inventory" },
+      { src: "/fulfillflow-tasks.png", alt: "FulfillFlow API response showing three asynchronous fulfillment tasks", caption: "Asynchronous fulfillment tasks" },
+      { src: "/fulfillflow-rabbitmq.png", alt: "RabbitMQ dashboard showing FulfillFlow processing and dead-letter queues", caption: "RabbitMQ processing queues" },
+    ],
+    links: [
+      { label: "Source code", href: "https://github.com/jonathanphuung/fulfillflow" },
+    ],
+  },
   {
     title: "Dementia Care Support Platform",
     year: "2026",
