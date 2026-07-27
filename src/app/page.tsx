@@ -8,10 +8,17 @@ export default function HomePage() {
     <main id="main-content">
       <section className="hero section-wrap" aria-labelledby="intro-heading" data-reveal>
         <div className="availability">San Francisco Bay Area / open to SWE internships</div>
-        <p className="intro-label">Hi, I&apos;m Jonathan.</p>
+        <p className="intro-label glitch-reveal" data-text="Hi, I'm Jonathan.">
+          <span>Hi, I&apos;m Jonathan.</span>
+          <span className="intro-underline" aria-hidden="true" />
+        </p>
         <h1 id="intro-heading">
-          <span className="headline-plain">CS student building</span>{" "}
-          <span className="headline-gradient">web apps end-to-end</span>
+          <span className="headline-plain glitch-reveal" data-text="CS student building">
+            CS student building
+          </span>{" "}
+          <span className="headline-gradient glitch-reveal" data-text="web apps end-to-end">
+            web apps end-to-end
+          </span>
         </h1>
         <p className="hero-copy">
           Most of the projects I build start with a simple question: how can I make this easier for someone? Whether it&apos;s a tool for caregivers or an app to organize a job search, I enjoy taking an idea and turning it into something people can use.

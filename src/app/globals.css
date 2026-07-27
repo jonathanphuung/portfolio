@@ -163,7 +163,6 @@ a { color: inherit; }
 }
 
 .motion-ready .hero.is-visible .availability,
-.motion-ready .hero.is-visible .intro-label,
 .motion-ready .hero.is-visible h1,
 .motion-ready .hero.is-visible .hero-copy,
 .motion-ready .hero.is-visible .proof-bar,
@@ -175,7 +174,6 @@ a { color: inherit; }
   animation: hero-glow-float 9s ease-in-out infinite alternate;
 }
 
-.motion-ready .hero.is-visible .intro-label { animation-delay: 80ms; }
 .motion-ready .hero.is-visible h1 { animation-delay: 140ms; }
 .motion-ready .hero.is-visible .hero-copy { animation-delay: 220ms; }
 .motion-ready .hero.is-visible .proof-bar { animation-delay: 300ms; }
@@ -254,10 +252,17 @@ a { color: inherit; }
   color: transparent;
   font-size: clamp(1rem, 2vw, 1.35rem);
   font-weight: 700;
-  animation: intro-label-glow 3.8s ease-in-out infinite;
+  animation:
+    text-mask-reveal 980ms steps(9, end) both,
+    intro-label-glow 3.8s ease-in-out 1.15s infinite;
 }
 
-.intro-label::after {
+.intro-label > span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-underline {
   content: "";
   position: absolute;
   left: 0;
@@ -282,7 +287,7 @@ a { color: inherit; }
 
 .headline-plain {
   display: inline-block;
-  animation: headline-focus 900ms cubic-bezier(.22, 1, .36, 1) 120ms both;
+  animation: text-mask-reveal 1.05s steps(10, end) 80ms both;
 }
 
 .headline-gradient {
@@ -295,8 +300,58 @@ a { color: inherit; }
   -webkit-background-clip: text;
   color: transparent;
   animation:
-    headline-shimmer 6.5s ease-in-out infinite,
-    headline-pop 980ms cubic-bezier(.22, 1, .36, 1) 300ms both;
+    text-mask-reveal 1.18s steps(10, end) 180ms both,
+    headline-shimmer 6.5s ease-in-out 1.25s infinite;
+}
+
+.glitch-reveal {
+  position: relative;
+}
+
+.glitch-reveal::before,
+.glitch-reveal::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch-reveal::before {
+  color: #00c2ff;
+  text-shadow: -2px 0 color-mix(in srgb, #00c2ff 75%, transparent);
+  animation: glitch-layer-a 1.2s steps(2, end) both;
+}
+
+.glitch-reveal::after {
+  color: #ff4fd8;
+  text-shadow: 2px 0 color-mix(in srgb, #ff4fd8 75%, transparent);
+  animation: glitch-layer-b 1.2s steps(2, end) 70ms both;
+}
+
+@keyframes text-mask-reveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    filter: blur(6px);
+    text-shadow: 8px 0 color-mix(in srgb, var(--accent) 28%, transparent);
+  }
+  42% {
+    clip-path: inset(0 22% 0 0);
+  }
+  58% {
+    clip-path: inset(0 38% 0 0);
+  }
+  78% {
+    clip-path: inset(0 0 0 0);
+    filter: blur(2px);
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    filter: blur(0);
+    text-shadow: none;
+  }
 }
 
 @keyframes intro-label-glow {
@@ -309,30 +364,21 @@ a { color: inherit; }
   to { transform: scaleX(1); opacity: 1; }
 }
 
-@keyframes headline-focus {
-  from {
-    filter: blur(10px);
-    letter-spacing: -.11em;
-  }
-  to {
-    filter: blur(0);
-    letter-spacing: -.075em;
-  }
+@keyframes glitch-layer-a {
+  0%, 8% { opacity: .8; transform: translate(7px, -2px); clip-path: inset(0 0 82% 0); }
+  12%, 20% { opacity: .55; transform: translate(-5px, 2px); clip-path: inset(35% 0 42% 0); }
+  25%, 34% { opacity: .72; transform: translate(4px, 0); clip-path: inset(68% 0 12% 0); }
+  39%, 47% { opacity: .42; transform: translate(-8px, -1px); clip-path: inset(16% 0 62% 0); }
+  52%, 62% { opacity: .64; transform: translate(3px, 2px); clip-path: inset(50% 0 28% 0); }
+  70%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
 }
 
-@keyframes headline-pop {
-  0% {
-    filter: saturate(.75);
-    transform: translateY(.18em) scale(.98);
-  }
-  70% {
-    filter: saturate(1.18);
-    transform: translateY(-.03em) scale(1.01);
-  }
-  100% {
-    filter: saturate(1);
-    transform: translateY(0) scale(1);
-  }
+@keyframes glitch-layer-b {
+  0%, 10% { opacity: .62; transform: translate(-6px, 2px); clip-path: inset(76% 0 0 0); }
+  16%, 25% { opacity: .72; transform: translate(8px, -2px); clip-path: inset(8% 0 72% 0); }
+  31%, 40% { opacity: .48; transform: translate(-3px, 0); clip-path: inset(44% 0 36% 0); }
+  46%, 56% { opacity: .68; transform: translate(5px, 1px); clip-path: inset(62% 0 18% 0); }
+  64%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
 }
 
 @keyframes headline-shimmer {
