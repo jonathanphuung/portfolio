@@ -5,6 +5,12 @@ const scrollEffectsScript = `
     const root = document.documentElement;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const galleryFrames = Array.from(document.querySelectorAll(".project-image-wrap"));
+    const sections = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    const navLinks = new Map(
+      sectionIds.map((id) => [id, document.querySelector('[data-nav-link="' + id + '"]')]),
+    );
 
     const updateProgress = () => {
       const scrollable = document.body.scrollHeight - window.innerHeight;
@@ -23,6 +29,18 @@ const scrollEffectsScript = `
       });
     };
 
+    const updateActiveNav = () => {
+      const checkpoint = window.innerHeight * 0.38;
+      const activeSection = sections.find((section) => {
+        const rect = section.getBoundingClientRect();
+        return rect.top <= checkpoint && rect.bottom > checkpoint;
+      });
+
+      navLinks.forEach((link, id) => {
+        if (link) link.classList.toggle("is-active", id === activeSection?.id);
+      });
+    };
+
     let animationFrame = 0;
     const updateScrollState = () => {
       if (animationFrame) return;
@@ -30,6 +48,7 @@ const scrollEffectsScript = `
       animationFrame = window.requestAnimationFrame(() => {
         animationFrame = 0;
         updateProgress();
+        updateActiveNav();
         if (!prefersReducedMotion) updateGalleryMotion();
       });
     };
@@ -58,32 +77,6 @@ const scrollEffectsScript = `
       });
     }
 
-    const navLinks = new Map(
-      sectionIds.map((id) => [id, document.querySelector('[data-nav-link="' + id + '"]')]),
-    );
-
-    const activeObserver = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (!visible) return;
-
-        navLinks.forEach((link, id) => {
-          if (link) link.classList.toggle("is-active", id === visible.target.id);
-        });
-      },
-      {
-        rootMargin: "-30% 0px -55% 0px",
-        threshold: [0.1, 0.25, 0.5, 0.75],
-      },
-    );
-
-    sectionIds.forEach((id) => {
-      const section = document.getElementById(id);
-      if (section) activeObserver.observe(section);
-    });
   };
 
   if (document.readyState === "loading") {
