@@ -377,6 +377,14 @@ a { color: inherit; }
   object-fit: contain;
   object-position: top center;
   background: white;
+  transform: translateY(var(--image-shift, 0));
+  animation: image-fade 280ms ease both;
+  will-change: transform;
+}
+
+@keyframes image-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .image-caption {
@@ -426,6 +434,45 @@ a { color: inherit; }
 .gallery-controls button.active {
   background: var(--accent);
   transform: scale(1.2);
+}
+
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.35rem;
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  border-radius: 999px;
+  padding: .45rem .7rem;
+  background: color-mix(in srgb, white 88%, transparent);
+  color: var(--ink);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .68rem;
+  font-weight: 750;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%) scale(.96);
+  backdrop-filter: blur(12px);
+  transition: opacity 180ms ease, transform 180ms ease, background 180ms ease;
+}
+
+.gallery-arrow-prev { left: .85rem; }
+.gallery-arrow-next { right: .85rem; }
+
+.project-image-wrap:hover .gallery-arrow,
+.gallery-arrow:focus-visible {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.gallery-arrow:hover,
+.gallery-arrow:focus-visible {
+  background: white;
 }
 
 .project-copy {

@@ -8,6 +8,7 @@ export function ScrollEffects() {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const root = document.documentElement;
+    const galleryFrames = Array.from(document.querySelectorAll<HTMLElement>(".project-image-wrap"));
 
     const updateProgress = () => {
       const scrollable = document.body.scrollHeight - window.innerHeight;
@@ -15,9 +16,31 @@ export function ScrollEffects() {
       root.style.setProperty("--scroll-progress", `${Math.min(Math.max(progress, 0), 1)}`);
     };
 
-    updateProgress();
-    window.addEventListener("scroll", updateProgress, { passive: true });
-    window.addEventListener("resize", updateProgress);
+    const updateGalleryMotion = () => {
+      galleryFrames.forEach((frame) => {
+        const rect = frame.getBoundingClientRect();
+        const frameCenter = rect.top + rect.height / 2;
+        const viewportCenter = window.innerHeight / 2;
+        const distance = (viewportCenter - frameCenter) / window.innerHeight;
+        const shift = Math.max(Math.min(distance * 22, 18), -18);
+        frame.style.setProperty("--image-shift", `${shift}px`);
+      });
+    };
+
+    let animationFrame = 0;
+    const updateScrollState = () => {
+      if (animationFrame) return;
+
+      animationFrame = window.requestAnimationFrame(() => {
+        animationFrame = 0;
+        updateProgress();
+        if (!prefersReducedMotion) updateGalleryMotion();
+      });
+    };
+
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
 
     if (!prefersReducedMotion) {
       root.classList.add("motion-ready");
@@ -39,18 +62,22 @@ export function ScrollEffects() {
       });
 
       return () => {
-        window.removeEventListener("scroll", updateProgress);
-        window.removeEventListener("resize", updateProgress);
+        window.removeEventListener("scroll", updateScrollState);
+        window.removeEventListener("resize", updateScrollState);
+        if (animationFrame) window.cancelAnimationFrame(animationFrame);
         revealObserver.disconnect();
         root.classList.remove("motion-ready");
         root.style.removeProperty("--scroll-progress");
+        galleryFrames.forEach((frame) => frame.style.removeProperty("--image-shift"));
       };
     }
 
     return () => {
-      window.removeEventListener("scroll", updateProgress);
-      window.removeEventListener("resize", updateProgress);
+      window.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
       root.style.removeProperty("--scroll-progress");
+      galleryFrames.forEach((frame) => frame.style.removeProperty("--image-shift"));
     };
   }, []);
 
