@@ -61,8 +61,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           }}
         />
         <TopNav />
-        <ScrollEffects />
         {children}
+        <ScrollEffects />
       </body>
     </html>
   );

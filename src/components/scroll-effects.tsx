@@ -1,19 +1,15 @@
-"use client";
-
-import { useEffect } from "react";
-
-const SECTION_IDS = ["work", "about", "contact"];
-
-export function ScrollEffects() {
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const scrollEffectsScript = `
+(() => {
+  const init = () => {
+    const sectionIds = ["work", "about", "contact"];
     const root = document.documentElement;
-    const galleryFrames = Array.from(document.querySelectorAll<HTMLElement>(".project-image-wrap"));
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const galleryFrames = Array.from(document.querySelectorAll(".project-image-wrap"));
 
     const updateProgress = () => {
       const scrollable = document.body.scrollHeight - window.innerHeight;
       const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
-      root.style.setProperty("--scroll-progress", `${Math.min(Math.max(progress, 0), 1)}`);
+      root.style.setProperty("--scroll-progress", String(Math.min(Math.max(progress, 0), 1)));
     };
 
     const updateGalleryMotion = () => {
@@ -23,7 +19,7 @@ export function ScrollEffects() {
         const viewportCenter = window.innerHeight / 2;
         const distance = (viewportCenter - frameCenter) / window.innerHeight;
         const shift = Math.max(Math.min(distance * 22, 18), -18);
-        frame.style.setProperty("--image-shift", `${shift}px`);
+        frame.style.setProperty("--image-shift", shift + "px");
       });
     };
 
@@ -60,33 +56,10 @@ export function ScrollEffects() {
       document.querySelectorAll("[data-reveal]").forEach((element) => {
         revealObserver.observe(element);
       });
-
-      return () => {
-        window.removeEventListener("scroll", updateScrollState);
-        window.removeEventListener("resize", updateScrollState);
-        if (animationFrame) window.cancelAnimationFrame(animationFrame);
-        revealObserver.disconnect();
-        root.classList.remove("motion-ready");
-        root.style.removeProperty("--scroll-progress");
-        galleryFrames.forEach((frame) => frame.style.removeProperty("--image-shift"));
-      };
     }
 
-    return () => {
-      window.removeEventListener("scroll", updateScrollState);
-      window.removeEventListener("resize", updateScrollState);
-      if (animationFrame) window.cancelAnimationFrame(animationFrame);
-      root.style.removeProperty("--scroll-progress");
-      galleryFrames.forEach((frame) => frame.style.removeProperty("--image-shift"));
-    };
-  }, []);
-
-  useEffect(() => {
     const navLinks = new Map(
-      SECTION_IDS.map((id) => [
-        id,
-        document.querySelector<HTMLAnchorElement>(`[data-nav-link="${id}"]`),
-      ]),
+      sectionIds.map((id) => [id, document.querySelector('[data-nav-link="' + id + '"]')]),
     );
 
     const activeObserver = new IntersectionObserver(
@@ -98,7 +71,7 @@ export function ScrollEffects() {
         if (!visible) return;
 
         navLinks.forEach((link, id) => {
-          link?.classList.toggle("is-active", id === visible.target.id);
+          if (link) link.classList.toggle("is-active", id === visible.target.id);
         });
       },
       {
@@ -107,13 +80,25 @@ export function ScrollEffects() {
       },
     );
 
-    SECTION_IDS.forEach((id) => {
+    sectionIds.forEach((id) => {
       const section = document.getElementById(id);
       if (section) activeObserver.observe(section);
     });
+  };
 
-    return () => activeObserver.disconnect();
-  }, []);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
+  } else {
+    init();
+  }
+})();
+`;
 
-  return null;
+export function ScrollEffects() {
+  return (
+    <>
+      <span className="scroll-effects-sentinel" aria-hidden="true" hidden />
+      <script id="portfolio-scroll-effects" dangerouslySetInnerHTML={{ __html: scrollEffectsScript }} />
+    </>
+  );
 }
