@@ -10,7 +10,7 @@ export default function HomePage() {
         <div className="availability">San Francisco Bay Area / open to SWE internships</div>
         <p className="intro-label">Hi, I&apos;m Jonathan.</p>
         <h1 id="intro-heading">
-          CS student building web apps end-to-end.
+          CS student building <span className="headline-gradient">web apps end-to-end</span>.
         </h1>
         <p className="hero-copy">
           Most of the projects I build start with a simple question: how can I make this easier for someone? Whether it&apos;s a tool for caregivers or an app to organize a job search, I enjoy taking an idea and turning it into something people can use.
@@ -53,7 +53,7 @@ export default function HomePage() {
 
         <div className="project-list">
           {PROJECTS.map((project, index) => (
-            <article className="project" key={project.title} data-reveal>
+            <article className={`project ${index === 0 ? "project-featured" : ""}`} key={project.title} data-reveal>
               <ProjectGallery
                 images={project.images ?? [{
                   src: project.image,
@@ -63,6 +63,7 @@ export default function HomePage() {
                 priority={index === 0}
               />
               <div className="project-copy">
+                {index === 0 && <div className="featured-badge">Featured project</div>}
                 <div className="project-number">0{index + 1} / {project.year}</div>
                 <h3>{project.title}</h3>
                 <p className="project-summary">{project.summary}</p>
@@ -163,6 +164,13 @@ export default function HomePage() {
       <section className="section-wrap skills" aria-labelledby="skills-heading" data-reveal>
         <p className="section-kicker">Tools I use</p>
         <h2 id="skills-heading">The short version</h2>
+        <div className="skills-marquee" aria-hidden="true">
+          <div className="skills-marquee-track">
+            {[...SKILLS, ...SKILLS].map((skill, index) => (
+              <span key={`${skill}-${index}`}>{skill}</span>
+            ))}
+          </div>
+        </div>
         <ul className="skill-list skill-list-large">
           {SKILLS.map((skill) => <li key={skill}>{skill}</li>)}
         </ul>
