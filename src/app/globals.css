@@ -252,8 +252,9 @@ a { color: inherit; }
   color: transparent;
   font-size: clamp(1rem, 2vw, 1.35rem);
   font-weight: 700;
+  line-height: 1.25;
   animation:
-    text-mask-reveal 980ms steps(9, end) both,
+    text-mask-reveal 5.2s steps(10, end) both infinite,
     intro-label-glow 3.8s ease-in-out 1.15s infinite;
 }
 
@@ -287,11 +288,17 @@ a { color: inherit; }
 
 .headline-plain {
   display: inline-block;
-  animation: text-mask-reveal 1.05s steps(10, end) 80ms both;
+  padding-bottom: .08em;
+  margin-bottom: -.08em;
+  line-height: 1;
+  animation: text-mask-reveal 5.2s steps(10, end) 80ms both infinite;
 }
 
 .headline-gradient {
   display: inline-block;
+  padding-bottom: .08em;
+  margin-bottom: -.08em;
+  line-height: 1;
   background:
     linear-gradient(90deg, var(--ink), var(--accent-dark), #2f9e44, var(--ink)),
     linear-gradient(90deg, transparent, color-mix(in srgb, white 70%, transparent), transparent);
@@ -300,7 +307,7 @@ a { color: inherit; }
   -webkit-background-clip: text;
   color: transparent;
   animation:
-    text-mask-reveal 1.18s steps(10, end) 180ms both,
+    text-mask-reveal 5.2s steps(10, end) 180ms both infinite,
     headline-shimmer 6.5s ease-in-out 1.25s infinite;
 }
 
@@ -322,33 +329,33 @@ a { color: inherit; }
 .glitch-reveal::before {
   color: #00c2ff;
   text-shadow: -2px 0 color-mix(in srgb, #00c2ff 75%, transparent);
-  animation: glitch-layer-a 1.2s steps(2, end) both;
+  animation: glitch-layer-a 5.2s steps(2, end) both infinite;
 }
 
 .glitch-reveal::after {
   color: #ff4fd8;
   text-shadow: 2px 0 color-mix(in srgb, #ff4fd8 75%, transparent);
-  animation: glitch-layer-b 1.2s steps(2, end) 70ms both;
+  animation: glitch-layer-b 5.2s steps(2, end) 70ms both infinite;
 }
 
 @keyframes text-mask-reveal {
   0% {
-    clip-path: inset(0 100% 0 0);
+    clip-path: inset(-.12em 100% -.18em 0);
     filter: blur(6px);
     text-shadow: 8px 0 color-mix(in srgb, var(--accent) 28%, transparent);
   }
-  42% {
-    clip-path: inset(0 22% 0 0);
+  10% {
+    clip-path: inset(-.12em 22% -.18em 0);
   }
-  58% {
-    clip-path: inset(0 38% 0 0);
+  14% {
+    clip-path: inset(-.12em 38% -.18em 0);
   }
-  78% {
-    clip-path: inset(0 0 0 0);
+  22% {
+    clip-path: inset(-.12em 0 -.18em 0);
     filter: blur(2px);
   }
-  100% {
-    clip-path: inset(0 0 0 0);
+  28%, 100% {
+    clip-path: inset(-.12em 0 -.18em 0);
     filter: blur(0);
     text-shadow: none;
   }
@@ -365,20 +372,20 @@ a { color: inherit; }
 }
 
 @keyframes glitch-layer-a {
-  0%, 8% { opacity: .8; transform: translate(7px, -2px); clip-path: inset(0 0 82% 0); }
-  12%, 20% { opacity: .55; transform: translate(-5px, 2px); clip-path: inset(35% 0 42% 0); }
-  25%, 34% { opacity: .72; transform: translate(4px, 0); clip-path: inset(68% 0 12% 0); }
-  39%, 47% { opacity: .42; transform: translate(-8px, -1px); clip-path: inset(16% 0 62% 0); }
-  52%, 62% { opacity: .64; transform: translate(3px, 2px); clip-path: inset(50% 0 28% 0); }
-  70%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  0%, 2% { opacity: .8; transform: translate(7px, -2px); clip-path: inset(0 0 82% 0); }
+  4%, 7% { opacity: .55; transform: translate(-5px, 2px); clip-path: inset(35% 0 42% 0); }
+  9%, 12% { opacity: .72; transform: translate(4px, 0); clip-path: inset(68% 0 12% 0); }
+  14%, 17% { opacity: .42; transform: translate(-8px, -1px); clip-path: inset(16% 0 62% 0); }
+  19%, 22% { opacity: .64; transform: translate(3px, 2px); clip-path: inset(50% 0 28% 0); }
+  25%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
 }
 
 @keyframes glitch-layer-b {
-  0%, 10% { opacity: .62; transform: translate(-6px, 2px); clip-path: inset(76% 0 0 0); }
-  16%, 25% { opacity: .72; transform: translate(8px, -2px); clip-path: inset(8% 0 72% 0); }
-  31%, 40% { opacity: .48; transform: translate(-3px, 0); clip-path: inset(44% 0 36% 0); }
-  46%, 56% { opacity: .68; transform: translate(5px, 1px); clip-path: inset(62% 0 18% 0); }
-  64%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
+  0%, 3% { opacity: .62; transform: translate(-6px, 2px); clip-path: inset(76% 0 0 0); }
+  5%, 9% { opacity: .72; transform: translate(8px, -2px); clip-path: inset(8% 0 72% 0); }
+  11%, 15% { opacity: .48; transform: translate(-3px, 0); clip-path: inset(44% 0 36% 0); }
+  17%, 21% { opacity: .68; transform: translate(5px, 1px); clip-path: inset(62% 0 18% 0); }
+  24%, 100% { opacity: 0; transform: translate(0); clip-path: inset(0); }
 }
 
 @keyframes headline-shimmer {
