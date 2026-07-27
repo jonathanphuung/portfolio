@@ -1,15 +1,18 @@
-const scrollEffectsScript = `
-(() => {
-  const init = () => {
+"use client";
+
+import { useEffect } from "react";
+
+export function ScrollEffects() {
+  useEffect(() => {
     const sectionIds = ["work", "about", "contact"];
     const root = document.documentElement;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const galleryFrames = Array.from(document.querySelectorAll(".project-image-wrap"));
+    const galleryFrames = Array.from(document.querySelectorAll<HTMLElement>(".project-image-wrap"));
     const sections = sectionIds
       .map((id) => document.getElementById(id))
-      .filter(Boolean);
+      .filter((section): section is HTMLElement => Boolean(section));
     const navLinks = new Map(
-      sectionIds.map((id) => [id, document.querySelector('[data-nav-link="' + id + '"]')]),
+      sectionIds.map((id) => [id, document.querySelector<HTMLElement>('[data-nav-link="' + id + '"]')]),
     );
 
     const updateProgress = () => {
@@ -53,19 +56,17 @@ const scrollEffectsScript = `
       });
     };
 
-    updateScrollState();
-    window.addEventListener("scroll", updateScrollState, { passive: true });
-    window.addEventListener("resize", updateScrollState);
+    let revealObserver: IntersectionObserver | undefined;
 
     if (!prefersReducedMotion) {
       root.classList.add("motion-ready");
 
-      const revealObserver = new IntersectionObserver(
+      revealObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("is-visible");
-              revealObserver.unobserve(entry.target);
+              revealObserver?.unobserve(entry.target);
             }
           });
         },
@@ -73,25 +74,22 @@ const scrollEffectsScript = `
       );
 
       document.querySelectorAll("[data-reveal]").forEach((element) => {
-        revealObserver.observe(element);
+        revealObserver?.observe(element);
       });
     }
 
-  };
+    updateScrollState();
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init, { once: true });
-  } else {
-    init();
-  }
-})();
-`;
+    return () => {
+      window.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+      revealObserver?.disconnect();
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+      root.classList.remove("motion-ready");
+    };
+  }, []);
 
-export function ScrollEffects() {
-  return (
-    <>
-      <span className="scroll-effects-sentinel" aria-hidden="true" hidden />
-      <script id="portfolio-scroll-effects" dangerouslySetInnerHTML={{ __html: scrollEffectsScript }} />
-    </>
-  );
+  return <span className="scroll-effects-sentinel" aria-hidden="true" hidden />;
 }
