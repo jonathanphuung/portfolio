@@ -6,7 +6,7 @@ const externalProps = { target: "_blank", rel: "noreferrer" } as const;
 export default function HomePage() {
   return (
     <main id="main-content">
-      <section className="hero section-wrap" aria-labelledby="intro-heading">
+      <section className="hero section-wrap" aria-labelledby="intro-heading" data-reveal>
         <div className="availability">San Francisco Bay Area / open to SWE internships</div>
         <p className="intro-label">Hi, I&apos;m Jonathan.</p>
         <h1 id="intro-heading">
@@ -43,7 +43,7 @@ export default function HomePage() {
       </section>
 
       <section className="section-wrap" id="work" aria-labelledby="work-heading">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <div>
             <p className="section-kicker">Selected work</p>
             <h2 id="work-heading">Four things I&apos;ve built</h2>
@@ -53,7 +53,7 @@ export default function HomePage() {
 
         <div className="project-list">
           {PROJECTS.map((project, index) => (
-            <article className="project" key={project.title}>
+            <article className="project" key={project.title} data-reveal>
               <ProjectGallery
                 images={project.images ?? [{
                   src: project.image,
@@ -114,14 +114,14 @@ export default function HomePage() {
       </section>
 
       <section className="section-wrap experience" id="about" aria-labelledby="experience-heading">
-        <div className="section-heading">
+        <div className="section-heading" data-reveal>
           <div>
             <p className="section-kicker">Experience</p>
             <h2 id="experience-heading">Experience &amp; education</h2>
           </div>
         </div>
         <div className="experience-grid">
-          <article>
+          <article data-reveal>
             <p className="experience-date">Sep 2025 - present</p>
             <h3>Software Engineering Intern</h3>
             <p className="experience-company">Dementia Aide</p>
@@ -129,7 +129,7 @@ export default function HomePage() {
               I built a caregiver guidance assistant that helps families of people with dementia find the right care and support from the ground up. I built the search ranking, the Next.js frontend, and connected the app to Shopify for product recommendations and checkout.
             </p>
           </article>
-          <article>
+          <article data-reveal>
             <p className="experience-date">Computer Science</p>
             <h3>San Francisco State University</h3>
             <p className="experience-company">B.S. candidate</p>
@@ -138,7 +138,7 @@ export default function HomePage() {
               build web apps from idea to release.
             </p>
           </article>
-          <article>
+          <article data-reveal>
             <p className="experience-date">Dec 2022 - present</p>
             <h3>Fulfillment Expert Team Captain</h3>
             <p className="experience-company">Target</p>
@@ -150,7 +150,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-wrap looking" aria-labelledby="looking-heading">
+      <section className="section-wrap looking" aria-labelledby="looking-heading" data-reveal>
         <div>
           <p className="section-kicker">Currently looking for</p>
           <h2 id="looking-heading">Software engineering internships</h2>
@@ -160,7 +160,7 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section className="section-wrap skills" aria-labelledby="skills-heading">
+      <section className="section-wrap skills" aria-labelledby="skills-heading" data-reveal>
         <p className="section-kicker">Tools I use</p>
         <h2 id="skills-heading">The short version</h2>
         <ul className="skill-list skill-list-large">
@@ -168,7 +168,7 @@ export default function HomePage() {
         </ul>
       </section>
 
-      <section className="contact section-wrap" id="contact" aria-labelledby="contact-heading">
+      <section className="contact section-wrap" id="contact" aria-labelledby="contact-heading" data-reveal>
         <p className="section-kicker">Get in touch</p>
         <h2 id="contact-heading">Looking for a software engineering intern?</h2>
         <p>I&apos;d be happy to talk about frontend, product engineering, or web platform internship opportunities.</p>

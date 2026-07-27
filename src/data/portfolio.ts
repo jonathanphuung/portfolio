@@ -65,8 +65,8 @@ export const PROJECTS: Project[] = [
     imageAlt: "Dementia care support platform home screen",
     imageCaption: "Caregiver guidance assistant",
     links: [
-      { label: "Live site ↗ ", href: "https://dementia-aide.vercel.app/" },
-      { label: "Source code ↗ ", href: "https://github.com/jonathanphuung/DementiaAide" },
+      { label: "Live site", href: "https://dementia-aide.vercel.app/" },
+      { label: "Source code", href: "https://github.com/jonathanphuung/DementiaAide" },
     ],
   },
   {
@@ -90,11 +90,11 @@ export const PROJECTS: Project[] = [
     imageCaption: "Application tracker & Resume fit analyzer",
     links: [
       {
-        label: "Live site ↗ ",
+        label: "Live site",
         href: "https://applicationtrackerforeveryone.vercel.app/",
       },
       {
-        label: "Source code ↗ ",
+        label: "Source code",
         href: "https://github.com/jonathanphuung/InternshipTracker",
       },
     ],
