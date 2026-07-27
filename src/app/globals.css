@@ -9,6 +9,9 @@
   --accent: #ff5c35;
   --accent-dark: #c93618;
   --glow: #ffd7c8;
+  --hero-blue: #2563eb;
+  --hero-violet: #7c3aed;
+  --hero-cyan: #0891b2;
   --scroll-progress: 0;
 }
 
@@ -142,8 +145,8 @@ a { color: inherit; }
   aspect-ratio: 1;
   border-radius: 999px;
   background:
-    radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 26%, transparent), transparent 62%),
-    radial-gradient(circle at 70% 70%, color-mix(in srgb, #2f9e44 16%, transparent), transparent 58%);
+    radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--hero-violet) 22%, transparent), transparent 62%),
+    radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--hero-cyan) 18%, transparent), transparent 58%);
   filter: blur(8px);
   opacity: .8;
   pointer-events: none;
@@ -245,7 +248,7 @@ a { color: inherit; }
   position: relative;
   display: inline-flex;
   margin: 0 0 .6rem;
-  background: linear-gradient(90deg, var(--accent-dark), #2f9e44, var(--accent-dark));
+  background: linear-gradient(90deg, var(--hero-blue), var(--hero-violet), var(--hero-cyan), var(--hero-blue));
   background-size: 220% 100%;
   background-clip: text;
   -webkit-background-clip: text;
@@ -271,7 +274,7 @@ a { color: inherit; }
   bottom: -.28rem;
   height: .18rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), #2f9e44);
+  background: linear-gradient(90deg, var(--hero-blue), var(--hero-violet), var(--hero-cyan));
   transform: scaleX(0);
   transform-origin: left;
   animation: intro-underline 900ms cubic-bezier(.22, 1, .36, 1) 480ms both;
@@ -300,7 +303,7 @@ a { color: inherit; }
   margin-bottom: -.08em;
   line-height: 1;
   background:
-    linear-gradient(90deg, var(--ink), var(--accent-dark), #2f9e44, var(--ink)),
+    linear-gradient(90deg, var(--ink), var(--hero-blue), var(--hero-violet), var(--hero-cyan), var(--ink)),
     linear-gradient(90deg, transparent, color-mix(in srgb, white 70%, transparent), transparent);
   background-size: 220% 100%, 180% 100%;
   background-clip: text;
