@@ -7,7 +7,7 @@ export function TopNav() {
       <div className="scroll-progress" aria-hidden="true" />
       <nav className="nav-wrap" aria-label="Main navigation">
         <Link href="/" className="wordmark" aria-label="Jonathan Phung, home">
-          JP<span>.</span>
+          JP
         </Link>
         <div className="nav-links">
           <Link href="/#work" data-nav-link="work">Work</Link>
