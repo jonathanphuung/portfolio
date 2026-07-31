@@ -1,5 +1,6 @@
-import { redirect } from "next/navigation";
+import { TerminalPortfolio } from "@/components/terminal-portfolio";
+import { PROJECTS, SKILLS } from "@/data/portfolio";
 
 export default function ProjectsPage() {
-  redirect("/#work");
+  return <TerminalPortfolio projects={PROJECTS} skills={SKILLS} initialCommand="projects" />;
 }

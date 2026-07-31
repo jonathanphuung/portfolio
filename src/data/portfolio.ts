@@ -134,3 +134,39 @@ export const SKILLS = [
   "PostgreSQL",
   "Git",
 ];
+
+export const PROFILE = {
+  name: "Jonathan Phung",
+  location: "San Francisco Bay Area",
+  headline: "Computer science student building useful software end-to-end.",
+  summary:
+    "I turn practical problems into reliable software, from user-facing workflows to APIs, databases, event pipelines, and deployment automation.",
+  availability: "Open to software engineering internships",
+  email: "jonathanphuung@gmail.com",
+  github: "https://github.com/jonathanphuung",
+  linkedin: "https://www.linkedin.com/in/jonathanphuung",
+};
+
+export const EXPERIENCE = [
+  {
+    period: "Sep 2025 - present",
+    role: "Software Engineering Intern",
+    organization: "Dementia Aide",
+    description:
+      "Built a caregiver guidance assistant, including search ranking, the Next.js interface, safety-aware answer logic, and Shopify product recommendations and checkout.",
+  },
+  {
+    period: "B.S. candidate",
+    role: "Computer Science",
+    organization: "San Francisco State University",
+    description:
+      "Studying software engineering, data structures, databases, and the process of taking web applications from an idea to a production release.",
+  },
+  {
+    period: "Dec 2022 - present",
+    role: "Fulfillment Expert Team Captain",
+    organization: "Target",
+    description:
+      "Lead teams of 7 to 20 people, set daily priorities, coordinate across departments, and deliver time-sensitive work under strict operational deadlines.",
+  },
+];
