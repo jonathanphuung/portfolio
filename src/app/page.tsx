@@ -1,18 +1,34 @@
 import { PROJECTS, SKILLS } from "@/data/portfolio";
 import { ProjectGallery } from "@/components/project-gallery";
+import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
+import { Marquee } from "@/components/ui/marquee";
 
 const externalProps = { target: "_blank", rel: "noreferrer" } as const;
+const FEATURED_TECH = [
+  "Java 21",
+  "Spring Boot",
+  "Next.js",
+  "TypeScript",
+  "PostgreSQL",
+  "RabbitMQ",
+  "Redis",
+  "Docker",
+];
 
 export default function HomePage() {
   return (
     <main id="main-content">
       <section className="hero section-wrap" aria-labelledby="intro-heading" data-reveal>
-        <div className="availability">San Francisco Bay Area / open to SWE internships</div>
-        <p className="intro-label glitch-reveal" data-text="Hi, I'm Jonathan.">
+        <div className="availability">
+          <AnimatedShinyText className="availability-shine">
+            San Francisco Bay Area / open to SWE internships
+          </AnimatedShinyText>
+        </div>
+        <p className="intro-label">
           <span>Hi, I&apos;m Jonathan.</span>
           <span className="intro-underline" aria-hidden="true" />
         </p>
-        <h1 id="intro-heading">
+        <h1 id="intro-heading" aria-label="CS student building web apps end-to-end">
           <span className="headline-plain glitch-reveal" data-text="CS student building">
             CS student building
           </span>{" "}
@@ -48,6 +64,19 @@ export default function HomePage() {
             Email me
           </a>
         </div>
+      </section>
+
+      <section className="tech-ribbon section-wrap" aria-label="Core technologies" data-reveal>
+        <p className="tech-ribbon-label">Building across the stack</p>
+        <span className="sr-only">Core technologies: {FEATURED_TECH.join(", ")}</span>
+        <Marquee className="tech-marquee" pauseOnHover repeat={3} aria-hidden="true">
+          {FEATURED_TECH.map((technology) => (
+            <span className="tech-chip" key={technology}>
+              <span aria-hidden="true" />
+              {technology}
+            </span>
+          ))}
+        </Marquee>
       </section>
 
       <section className="section-wrap" id="work" aria-labelledby="work-heading">

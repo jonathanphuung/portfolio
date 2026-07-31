@@ -18,6 +18,9 @@
 @theme inline {
   --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --animate-shiny-text: shiny-text 8s infinite;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
 }
 
 @property --beam-angle {
@@ -221,27 +224,31 @@ a { color: inherit; }
   letter-spacing: .09em;
   overflow: hidden;
   box-shadow: 0 12px 34px color-mix(in srgb, var(--ink) 7%, transparent);
-  animation: badge-shimmer 4.8s ease-in-out infinite;
 }
 
-.availability::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, transparent 20%, color-mix(in srgb, white 55%, transparent) 42%, transparent 62%);
-  transform: translateX(-120%);
-  animation: badge-sweep 5.4s ease-in-out infinite;
-  pointer-events: none;
+.availability-shine {
+  color: var(--ink);
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--ink) 70%, transparent),
+    var(--accent),
+    color-mix(in srgb, var(--ink) 70%, transparent)
+  );
 }
 
-@keyframes badge-shimmer {
-  0%, 100% { background-position: 0% 50%, 0 0; }
-  50% { background-position: 100% 50%, 0 0; }
+@keyframes shiny-text {
+  0%, 90%, 100% { background-position: calc(-100% - var(--shiny-width)) 0; }
+  30%, 60% { background-position: calc(100% + var(--shiny-width)) 0; }
 }
 
-@keyframes badge-sweep {
-  0%, 62% { transform: translateX(-120%); }
-  82%, 100% { transform: translateX(120%); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
 }
 
 .intro-label {
@@ -257,7 +264,7 @@ a { color: inherit; }
   font-weight: 700;
   line-height: 1.25;
   animation:
-    text-mask-reveal 5.2s steps(10, end) both infinite,
+    text-mask-reveal 1.2s steps(10, end) both,
     intro-label-glow 3.8s ease-in-out 1.15s infinite;
 }
 
@@ -294,7 +301,7 @@ a { color: inherit; }
   padding-bottom: .08em;
   margin-bottom: -.08em;
   line-height: 1;
-  animation: text-mask-reveal 5.2s steps(10, end) 80ms both infinite;
+  animation: text-mask-reveal 1.25s steps(10, end) 80ms both;
 }
 
 .headline-gradient {
@@ -310,7 +317,7 @@ a { color: inherit; }
   -webkit-background-clip: text;
   color: transparent;
   animation:
-    text-mask-reveal 5.2s steps(10, end) 180ms both infinite,
+    text-mask-reveal 1.35s steps(10, end) 180ms both,
     headline-shimmer 6.5s ease-in-out 1.25s infinite;
 }
 
@@ -332,13 +339,13 @@ a { color: inherit; }
 .glitch-reveal::before {
   color: #00c2ff;
   text-shadow: -2px 0 color-mix(in srgb, #00c2ff 75%, transparent);
-  animation: glitch-layer-a 5.2s steps(2, end) both infinite;
+  animation: glitch-layer-a 1.35s steps(2, end) both;
 }
 
 .glitch-reveal::after {
   color: #ff4fd8;
   text-shadow: 2px 0 color-mix(in srgb, #ff4fd8 75%, transparent);
-  animation: glitch-layer-b 5.2s steps(2, end) 70ms both infinite;
+  animation: glitch-layer-b 1.35s steps(2, end) 70ms both;
 }
 
 @keyframes text-mask-reveal {
@@ -448,6 +455,58 @@ a { color: inherit; }
   flex-wrap: wrap;
   align-items: center;
   gap: .8rem 1.2rem;
+}
+
+.tech-ribbon {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  overflow: hidden;
+}
+
+.tech-ribbon-label {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tech-marquee {
+  --duration: 28s;
+  --gap: .6rem;
+  min-width: 0;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--line));
+  border-radius: 999px;
+  padding: .55rem .8rem;
+  background: color-mix(in srgb, var(--card) 84%, transparent);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: .72rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.tech-chip > span {
+  width: .38rem;
+  height: .38rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 .25rem color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .button {
@@ -987,6 +1046,7 @@ a { color: inherit; }
   .hero h1 { font-size: clamp(3.2rem, 16vw, 5.2rem); }
   .proof-bar { grid-template-columns: 1fr; }
   .proof-bar div:hover { transform: none; }
+  .tech-ribbon { grid-template-columns: 1fr; gap: .75rem; padding-top: 1rem; padding-bottom: 1rem; }
   .section-heading { grid-template-columns: 1fr; margin-bottom: 2rem; }
   .project { grid-template-columns: 1fr; min-height: 0; }
   .project:hover { transform: none; }
@@ -1013,4 +1073,6 @@ a { color: inherit; }
     animation-iteration-count: 1 !important;
     transition-duration: .01ms !important;
   }
+  .tech-marquee .marquee-track { animation: none !important; }
+  .tech-marquee .marquee-track:not(:first-child) { display: none; }
 }
