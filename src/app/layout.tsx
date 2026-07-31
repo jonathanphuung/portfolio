@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ScrollEffects } from "@/components/scroll-effects";
-import { TopNav } from "@/components/top-nav";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -60,9 +58,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             }).replace(/</g, "\\u003c"),
           }}
         />
-        <TopNav />
         {children}
-        <ScrollEffects />
       </body>
     </html>
   );
